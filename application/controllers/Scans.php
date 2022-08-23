@@ -20,6 +20,8 @@ class Scans extends CI_Controller {
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->load->view('templates/header');
+			$this->load->view('templates/sidebar');
+			$this->load->view('templates/workspace_start');
 			$this->load->view('scans/create', $data);
 			$this->load->view('templates/footer');
 		}
@@ -43,6 +45,8 @@ class Scans extends CI_Controller {
 		$data['title'] = 'Locations';
 		$data['locations'] = $this->ScanModel->get_locations();
 		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('templates/workspace_start');
 		$this->load->view('scans/locations', $data);
 		$this->load->view('templates/footer');
 	}

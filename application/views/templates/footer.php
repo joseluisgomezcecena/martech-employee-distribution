@@ -1,30 +1,39 @@
-<footer class="footer text-center"> <?php echo date("Y") ?> © Martech Medical <a
-			href="#">Continuous Improvement Software.</a>
+<!-- Footer -->
+<footer class="mt-auto">
+	<div class="footer">
+		<span class='uppercase'>&copy; 2022 Yeti Themes</span>
+		<nav>
+			<a href="mailto:Yeti Themes<info@yetithemes.net>?subject=Support">Support</a>
+			<span class="divider">|</span>
+			<a href="http://yeti.yetithemes.net/docs" target="_blank">Docs</a>
+		</nav>
+	</div>
 </footer>
-<!-- ============================================================== -->
-<!-- End footer -->
-<!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
-<script src="<?php echo base_url() ?>/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="<?php echo base_url() ?>/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url() ?>/assets/js/app-style-switcher.js"></script>
-<!--Wave Effects -->
-<script src="<?php echo base_url() ?>/assets/js/waves.js"></script>
-<!--Menu sidebar -->
-<script src="<?php echo base_url() ?>/assets/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="<?php echo base_url() ?>/assets/js/custom.js"></script>
+
+</main>
+
+<!-- Scripts -->
+<script
+		src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+<script src="<?php echo  base_url() ?>assets/js/vendor.js"></script>
+<script src="<?php echo  base_url() ?>assets/js/chart.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1"></script> -->
+<script src="<?php echo  base_url() ?>assets/js/script.js"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+	$(document).ready( function () {
+		$('#ingredientsTable').DataTable();
+	} );
+
+	function check_empty() {
+		if($(this).val().length ===0){
+			alert("empty");
+		}
+	}
+
+</script>
 </body>
 
 </html>
