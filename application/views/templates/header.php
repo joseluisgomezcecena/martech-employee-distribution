@@ -47,7 +47,7 @@
 	<!-- Search -->
 	<form class="hidden md:block ltr:ml-10 rtl:mr-10" action="#">
 		<label class="form-control-addon-within rounded-full">
-			<input type="text" class="form-control border-none" placeholder="Search">
+			<input type="text" class="form-control border-none" placeholder="Busqueda De Empleado">
 			<button type="button"
 					class="btn btn-link text-gray-300 dark:text-gray-700 dark:hover:text-primary text-xl leading-none la la-search ltr:mr-4 rtl:ml-4"></button>
 		</label>
@@ -76,28 +76,30 @@
 			<div class="custom-dropdown-menu p-5 text-center">
 				<div class="flex justify-around">
 					<a href="#" class="p-5 text-normal hover:text-primary">
-						<span class="block la la-cog text-5xl leading-none"></span>
-						<span>Settings</span>
+						<span class="block la la-id-card text-5xl leading-none"></span>
+						<span>Gafetes</span>
 					</a>
 					<a href="#" class="p-5 text-normal hover:text-primary">
-						<span class="block la la-users text-5xl leading-none"></span>
-						<span>Users</span>
+						<span class="block la la-cube text-5xl leading-none"></span>
+						<span>Configuración</span>
 					</a>
 				</div>
 				<div class="flex justify-around">
 					<a href="#" class="p-5 text-normal hover:text-primary">
-						<span class="block la la-book text-5xl leading-none"></span>
-						<span>Docs</span>
+						<span class="block la la-file-alt text-5xl leading-none"></span>
+						<span>Reportes</span>
 					</a>
+					<!--
 					<a href="#" class="p-5 text-normal hover:text-primary">
 						<span class="block la la-dollar text-5xl leading-none"></span>
 						<span>Shop</span>
 					</a>
+					-->
 				</div>
 			</div>
 		</div>
 
-		<!-- Notifications -->
+		<!-- Notifications
 		<div class="dropdown self-stretch">
 			<button type="button"
 					class="relative flex items-center h-full btn-link ltr:ml-1 rtl:mr-1 px-2 text-2xl leading-none la la-bell"
@@ -137,7 +139,7 @@
 			</div>
 		</div>
 
-		<!-- User Menu -->
+
 		<div class="dropdown">
 			<button class="flex items-center ltr:ml-4 rtl:mr-4" data-toggle="custom-dropdown-menu"
 					data-tippy-arrow="true" data-tippy-placement="bottom-end">
@@ -168,5 +170,6 @@
 				</div>
 			</div>
 		</div>
+		User Menu -->
 	</div>
 </header>

@@ -10,6 +10,8 @@ class Scans extends CI_Controller {
 
 		$this->form_validation->set_rules('work_id', 'Numero de empleado', 'required');
 
+
+
 		//error styles.
 		$this->form_validation->set_error_delimiters(
 			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error</bdi></strong> &nbsp;',
@@ -28,12 +30,11 @@ class Scans extends CI_Controller {
 		else
 		{
 
-			//$this->FormModel->create_sup();
 			$this->ScanModel->create();
 
 			//session message
-			$this->session->set_flashdata('creado', 'Se ha registrado el scan.' . $this->input->post('work_id'));
-			redirect(base_url() . 'scans/new');
+			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id'));
+			redirect(base_url() . 'scans/new/' . $location);
 		}
 
 	}

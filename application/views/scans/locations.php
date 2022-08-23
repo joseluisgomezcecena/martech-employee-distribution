@@ -1,44 +1,35 @@
-<div class="page-breadcrumb bg-white">
-	<div class="row align-items-center">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h4 class="page-title">Toma de asistencia.</h4>
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="d-md-flex">
-				<ol class="breadcrumb ms-auto">
-					<li><a href="#" class="fw-normal">Asistencia.</a></li>
-				</ol>
-			</div>
-		</div>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
+
+<section class="breadcrumb">
+	<h1>Escaneo de Gafetes</h1>
+	<ul>
+		<li><a href="#">Elección de Ubicación</a></li>
+		<li class="divider la la-arrow-right"></li>
+		<li>Escaneo de Gafetes</li>
+	</ul>
+</section>
+
+
+
+<div class="grid lg:grid-cols-2 gap-5">
+	<div class="grid sm:grid-cols-3 gap-5">
 
 
 
 
-<div class="container-fluid">
-	<!-- ============================================================== -->
-	<!-- Three charts -->
-	<!-- ============================================================== -->
-	<div class="row">
 
 		<?php foreach ($locations as $location): ?>
-		<div class=" col-lg-3">
 
-			<div style="border-radius: 5%; min-height: 290px" class="card border shadow ">
 
-				<div class="card-body">
-
-					<h3 class="font-weight-bolder text-uppercase mb-5"><b><?php echo $location['location_name'] ?></b></h3>
-					<p><?php echo $location['planner_id'] ?></p>
-					<div class="text-center mt-5">
-						<a href="<?php echo base_url() ?>scans/new/<?php echo $location['location_id'] ?>" class="btn btn-primary ">Seleccionar</a>
+			<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
+				<a href="<?php echo base_url() ?>scans/new/<?php echo $location['location_id'] ?>">
+					<div>
+						<span class="text-primary text-5xl leading-none la la-id-card"></span>
+						<p class="mt-2"><?php echo $location['location_name'] ?></p>
+						<div class="text-primary mt-5 text-3xl leading-none"><?php echo $location['planner_id'] ?></div>
 					</div>
-
-				</div>
+				</a>
 			</div>
-		</div>
+
 		<?php endforeach; ?>
 
 	</div>

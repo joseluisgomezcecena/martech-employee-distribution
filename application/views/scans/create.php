@@ -1,74 +1,62 @@
-<div class="page-breadcrumb bg-white">
-	<div class="row align-items-center">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h4 class="page-title">Toma de asistencia <b class="text-primary"><?php echo $location['location_name'] ?></b>.</h4>
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="d-md-flex">
-				<ol class="breadcrumb ms-auto">
-					<li><a href="#" class="fw-normal">Asistencia.</a></li>
-				</ol>
-			</div>
-		</div>
+<section class="breadcrumb">
+	<h1><?php echo $location['location_name'] ?></h1>
+	<ul>
+		<li><a href="#">Escaneo de Gafetes</a></li>
+		<li class="divider la la-arrow-right"></li>
+		<li><?php echo $location['location_name'] ?></li>
+	</ul>
+</section>
+
+
+
+<?php if($this->session->flashdata('creado')): ?>
+
+	<div class="alert alert_success mb-5">
+		<strong class="uppercase"><bdi>Registrado Exitosamente!</bdi></strong>
+		Se ha registrado la asistencia.
+
+		<?php echo $this->session->flashdata('creado') ?>
+
+		<button type="button" class="dismiss la la-times" data-dismiss="alert"></button>
 	</div>
-	<!-- /.col-lg-12 -->
-</div>
+
+<?php endif; ?>
 
 
 
 
-<div class="container-fluid">
-	<!-- ============================================================== -->
-	<!-- Contenido -->
-	<!-- ============================================================== -->
-	<div class="row justify-content-center">
-		<div class="col-lg-12 col-md-12">
+<div class="grid lg:grid-cols-1 gap-5">
+	<!-- Summaries -->
+	<div class="grid sm:grid-cols-1 gap-5 justify-center items-center">
 
 
 
+		<div class="card p-5 min-w-0">
+			<h3>Escanea tu Gafete</h3>
+			<div class="mt-5 min-w-0">
 
-			<?php if($this->session->flashdata('creado')): ?>
+				<?php echo form_open('scans/create/' . $location['location_id']) ?>
 
-				<div class="alert alert-success alert-dismissible fade show" role="alert">
-					<strong class="uppercase"><bdi>Asistencia registrada!</bdi></strong>
-					Se ha registrado la asistencia.
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
+				<div class=""></div>
 
-				<?php $this->session->flashdata('creado'); ?>
-
-
-			<?php endif; ?>
-
-
-			<div style="border-radius: 15px;" class="white-box analytics-info shadow">
-				<?php echo form_open('scans/create') ?>
-
-				<h3 class="box-title mb-5 text-center">Toma de asistencia a linea.</h3>
-
-				<div class="row">
-					<div class="col-lg-12">
+				<div class="">
+					<div style="text-align: center;" class="justify-center items-center object-center">
 						<?php echo validation_errors(); ?>
 
-						<input type="hidden" name="location_id" value="<?php echo $location['location_id'] ?>">
-						<div class="row">
-							<div class="col-lg-12 text-center">
-								<img style="width: 325px;" class="img-fluid text-center" src="<?php echo base_url() ?>assets/img/scan2.gif" alt="scan image">
-							</div>
-							<div style="opacity: 0;" class="col-lg-12">
-								<div class="form-group">
-									<label for="contador">Numero de empleado</label>
-									<input  type="text" class="form-control" id="code" name="work_id" value="" autofocus >
-								</div>
-							</div>
-						</div>
+							<input type="hidden" name="location_id" value="<?php echo $location['location_id'] ?>">
 
+							<img style="width: 325px; text-align: center" class="img-fluid justify-center object-center" src="<?php echo base_url() ?>assets/img/scan2.gif" alt="scan image">
+
+
+							<div style="opacity: 0;" class="col-lg-12">
+								<input  type="text" class="form-control" id="code" name="work_id" value="" autofocus >
+							</div>
 					</div>
 				</div> <!--end row-->
 
 
 
-				<div class="form-group">
+				<div class="">
 					<input style="width: 100%; opacity: 0;" type="submit" name="save_asistencia" id="submitbarcode" class="btn btn-danger text-white btn-lg" value="Guardar">
 				</div>
 
@@ -76,8 +64,13 @@
 
 			</div>
 		</div>
+
+
 	</div>
 </div>
+
+
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

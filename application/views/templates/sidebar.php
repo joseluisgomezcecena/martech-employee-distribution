@@ -22,6 +22,11 @@
 			<span class="icon la la-id-card"></span>
 			<span class="title">Escanear Gafetes</span>
 		</a>
+		<a href="<?php echo base_url() ?>reports" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
+		   data-tippy-content="Pages">
+			<span class="icon la la-file-alt"></span>
+			<span class="title">Reportes</span>
+		</a>
 		<a href="#no-link" class="link" data-target="[data-menu=ui]" data-toggle="tooltip-menu" data-tippy-content="UI">
 			<span class="icon la la-cube"></span>
 			<span class="title">Configuración</span>

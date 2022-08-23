@@ -1,26 +1,48 @@
+<section class="breadcrumb">
+	<h1>Reportes</h1>
+	<ul>
+		<li><a href="#">Escaneo de Gafetes</a></li>
+		<li class="divider la la-arrow-right"></li>
+		<li>Reportes</li>
+	</ul>
+</section>
 
-<div class="page-breadcrumb bg-white">
-	<div class="row align-items-center">
-		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-			<h4 class="page-title">Reporte de entregas</h4>
-		</div>
-		<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-			<div class="d-md-flex">
-				<ol class="breadcrumb ms-auto">
-					<li><a href="#" class="fw-normal">Reporte de entregas</a></li>
-				</ol>
+
+
+<div class="card p-4 flex flex-wrap gap-5">
+	<?php echo form_open('reports/index', array('class' => 'form-horizontal')); ?>
+	<div class="grid grid-cols-5 gap-4">
+		<div style="margin: 15px;">
+			<label class="col-sm-12">Fecha de inicio</label>
+			<div class="col-sm-12">
+				<input type="date" class="form-control" id="datepicker" name="date_start" placeholder="Fecha de inicio" value="">
 			</div>
 		</div>
+
+		<div style="margin: 15px;">
+			<label class="col-sm-12">Fecha de inicio</label>
+			<div class="col-sm-12">
+				<input type="date" class="form-control" id="datepicker" name="date_end" placeholder="Fecha de inicio" value="">
+			</div>
+		</div>
+
+		<div style="margin: 15px;">
+			<div class="col-sm-12">
+				<label class="col-sm-12">Click para buscar</label>
+				<button class="btn_primary btn" type="submit" name="search"><i class="fa fa-search"></i> Buscar</button>
+			</div>
+		</div>
+
 	</div>
-	<!-- /.col-lg-12 -->
+	<?php echo form_close(); ?>
+
 </div>
 
 
 
+<!--
 <div style="margin-bottom: -350px" class="container-fluid">
-	<!-- ============================================================== -->
-	<!-- Three charts -->
-	<!-- ============================================================== -->
+
 	<div class="row justify-content-center">
 
 		<div class="col-lg-12">
@@ -59,25 +81,27 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid">
-	<!-- ============================================================== -->
-	<!-- Three charts -->
-	<!-- ============================================================== -->
-	<div class="row justify-content-center">
+-->
 
-		<div class="col-lg-12">
-			<div class="white-box analytics-info">
-				<h3 class="box-title">Sups</h3>
-				<div class="table-responsive">
-					<table style="width: 100%" id="entries-list" class="table">
-						<thead>
+<div class="card p-4  gap-5 mt-5">
+
+	<div class="container-fluid">
+
+		<div class="row justify-content-center">
+
+			<div class="col-lg-12 mt-5">
+				<div class="white-box analytics-info">
+					<h3 class="box-title">Registros</h3>
+					<div class="">
+						<table style="width: 100%" id="entries-list" class="table">
+							<thead>
 							<th>ID</th>
 							<th>Numero de empleado</th>
 							<th>Ubicación</th>
 							<th>Fecha de registro</th>
 							<th>Tipo</th>
-						</thead>
-						<tbody>
+							</thead>
+							<tbody>
 							<?php foreach ($scans as $scan): ?>
 								<tr>
 									<td><?php echo $scan['id']; ?></td>
@@ -97,12 +121,12 @@
 									</td>
 								</tr>
 							<?php endforeach ?>
-						</tbody>
+							</tbody>
 
-					</table>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
 
 
 
@@ -110,34 +134,36 @@
 
 
 
-		<div class="col-lg-12">
-			<div class="white-box analytics-info">
-				<h3 class="box-title">Sups</h3>
-				<div class="table-responsive">
-					<table style="width: 100%" id="entries-list" class="table">
-						<thead>
-						<th>Ubicación</th>
-						<th>Cantidad de empleados</th>
-						</thead>
-						<tbody>
-						<?php foreach ($groups as $group): ?>
-							<tr>
-								<td><?php echo $group['location_name']; ?></td>
-								<td><?php echo $group['cuenta']; ?></td>
-							</tr>
-						<?php endforeach ?>
-						</tbody>
+			<div class="col-lg-12 mt-5">
+				<div class="white-box analytics-info">
+					<h3 class="box-title">Registros por ubicación</h3>
+					<div class="table-responsive">
+						<table style="width: 100%" id="entries-list" class="table">
+							<thead>
+							<th>Ubicación</th>
+							<th>Cantidad de empleados</th>
+							</thead>
+							<tbody>
+							<?php foreach ($groups as $group): ?>
+								<tr>
+									<td><?php echo $group['location_name']; ?></td>
+									<td><?php echo $group['cuenta']; ?></td>
+								</tr>
+							<?php endforeach ?>
+							</tbody>
 
-					</table>
+						</table>
+					</div>
 				</div>
 			</div>
+
+
+
 		</div>
-
-
-
 	</div>
-</div>
 
+
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
