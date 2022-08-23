@@ -3,27 +3,30 @@
 	<div class="menu-items">
 		<div class="menu-header hidden">
 			<a href="#" class="flex items-center mx-8 mt-8">
+				<!--
 				<span class="avatar w-16 h-16">JD</span>
+				-->
 				<div class="ltr:ml-4 rtl:mr-4 ltr:text-left rtl:text-right">
-					<h5>John Doe</h5>
-					<p class="mt-2">Editor</p>
+					<h5>Martech Medical West.</h5>
+					<p class="mt-2">Distribución de empleados</p>
 				</div>
 			</a>
 			<hr class="mx-8 my-4">
 		</div>
-		<a href="index.html" class="link" data-toggle="tooltip-menu" data-tippy-content="Dashboard">
+		<a href="<?php echo base_url() ?>" class="link" data-toggle="tooltip-menu" data-tippy-content="Dashboard">
 			<span class="icon la la-laptop"></span>
-			<span class="title">Dashboard</span>
+			<span class="title">Inicio</span>
+		</a>
+		<a href="<?php echo base_url() ?>scans/location" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
+		   data-tippy-content="Pages">
+			<span class="icon la la-id-card"></span>
+			<span class="title">Escanear Gafetes</span>
 		</a>
 		<a href="#no-link" class="link" data-target="[data-menu=ui]" data-toggle="tooltip-menu" data-tippy-content="UI">
 			<span class="icon la la-cube"></span>
 			<span class="title">Configuración</span>
 		</a>
-		<a href="#no-link" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
-		   data-tippy-content="Pages">
-			<span class="icon la la-file-alt"></span>
-			<span class="title">Pages</span>
-		</a>
+		<!--
 		<a href="#no-link" class="link" data-target="[data-menu=applications]" data-toggle="tooltip-menu"
 		   data-tippy-content="Applications">
 			<span class="icon la la-store"></span>
@@ -43,6 +46,7 @@
 			<span class="icon la la-book-open"></span>
 			<span class="title">Docs</span>
 		</a>
+		-->
 	</div>
 
 	<!-- Dashboard -->
@@ -68,27 +72,14 @@
 	<!-- UI -->
 	<div class="menu-detail" data-menu="ui">
 		<div class="menu-detail-wrapper">
-			<h6 class="uppercase">Ingredientes & Tamaños</h6>
+			<h6 class="uppercase">Ubicaciónes</h6>
 			<a href="form-components.html">
 				<span class="la la-file-alt"></span>
-				Ingredientes
+				Alta de ubicaciones
 			</a>
 			<a href="form-input-groups.html">
-				<span class="la la-pizza-slice"></span>
-				Tamaños
-			</a>
-
-			<hr>
-			<h6 class="uppercase">Menu</h6>
-			<a href="components-alerts.html">
-				<span class="la la-bell"></span>
-				Configuración de Menu
-			</a>
-
-			<h6 class="uppercase">Extras</h6>
-			<a href="components-alerts.html">
-				<span class="la la-bell"></span>
-				Configuración de Extras
+				<span class="la la-sort-numeric-asc"></span>
+				Alta de Planning Number
 			</a>
 
 		</div>

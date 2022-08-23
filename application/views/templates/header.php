@@ -9,17 +9,17 @@
 
 
 	<!-- Generics -->
-	<link rel="icon" href="<?php echo  base_url() ?>assets/images/favicon/favicon-32.png" sizes="32x32">
-	<link rel="icon" href="<?php echo  base_url() ?>assets/images/favicon/favicon-128.png" sizes="128x128">
-	<link rel="icon" href="<?php echo  base_url() ?>assets/images/favicon/favicon-192.png" sizes="192x192">
+	<link rel="icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="32x32">
+	<link rel="icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="128x128">
+	<link rel="icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="192x192">
 
 	<!-- Android -->
-	<link rel="shortcut icon" href="<?php echo  base_url() ?>assets/images/favicon/favicon-196.png" sizes="196x196">
+	<link rel="shortcut icon"href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="196x196">
 
 	<!-- iOS -->
-	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/images/favicon/favicon-152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/images/favicon/favicon-167.png" sizes="167x167">
-	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/images/favicon/favicon-180.png" sizes="180x180">
+	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="152x152">
+	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="167x167">
+	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="180x180">
 
 	<link rel="stylesheet" href="<?php echo  base_url() ?>assets/css/style.css" />
 	<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
