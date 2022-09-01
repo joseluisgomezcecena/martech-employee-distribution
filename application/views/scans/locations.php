@@ -10,7 +10,7 @@
 
 
 
-<div class="grid lg:grid-cols-2 gap-5">
+<div class="grid lg:grid-cols-1 gap-5">
 	<div class="grid sm:grid-cols-3 gap-5">
 
 
