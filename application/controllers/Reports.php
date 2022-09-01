@@ -7,6 +7,7 @@ class Reports extends CI_Controller{
 		$data['title'] = "Reportes";
 		$data['scans'] = $this->ScanModel->get_scans();
 		$data['groups'] = $this->ScanModel->get_scans_by_location();
+		$data['employees'] = $this->ScanModel->get_scans_by_location_employee();
 
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');

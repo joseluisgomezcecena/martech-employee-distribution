@@ -144,10 +144,10 @@
 							<th>Cantidad de empleados</th>
 							</thead>
 							<tbody>
-							<?php foreach ($groups as $group): ?>
+							<?php foreach ($employees as $employee): ?>
 								<tr>
-									<td class="text-center justify-center items-center"><?php echo $group['location_name']; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $group['cuenta']; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $employee['location_name']; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $employee['cuenta']; ?></td>
 								</tr>
 							<?php endforeach ?>
 							</tbody>
