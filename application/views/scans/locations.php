@@ -26,7 +26,8 @@
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
 						<p class="mt-2"><?php echo $location['location_name'] ?></p>
-						<div class="text-primary mt-5 text-3xl leading-none"><?php echo $location['planner_id'] ?></div>
+						<div class="text-primary mt-5 text-3xl leading-none">Planner #:<?php echo $location['planner_id'] ?></div>
+						<div class="text-primary mt-5 text-3xl leading-none">Plant #:<?php echo $location['plant_id'] ?></div>
 					</div>
 				</a>
 			</div>
