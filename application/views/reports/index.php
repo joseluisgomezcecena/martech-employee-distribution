@@ -146,8 +146,8 @@
 							<tbody>
 							<?php foreach ($groups as $group): ?>
 								<tr>
-									<td><?php echo $group['location_name']; ?></td>
-									<td><?php echo $group['cuenta']; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $group['location_name']; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $group['cuenta']; ?></td>
 								</tr>
 							<?php endforeach ?>
 							</tbody>
