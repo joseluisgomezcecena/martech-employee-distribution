@@ -20,16 +20,17 @@
 		<?php foreach ($locations as $location): ?>
 
 
+		<div class="div" data-content="<?php echo $location['planner_id'] ?>">
 			<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
 				<a href="<?php echo base_url() ?>scans/new/<?php echo $location['location_id'] ?>">
-					<div data-content="<?php echo $location['planner_id'] ?>">
+					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
 						<p class="mt-2"><?php echo $location['location_name'] ?></p>
 						<div class="text-primary mt-5 text-3xl leading-none"><?php echo $location['planner_id'] ?></div>
 					</div>
 				</a>
 			</div>
-
+		</div>
 		<?php endforeach; ?>
 
 	</div>
