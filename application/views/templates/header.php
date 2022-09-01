@@ -47,7 +47,7 @@
 	<!-- Search -->
 	<form class="hidden md:block ltr:ml-10 rtl:mr-10" action="#">
 		<label class="form-control-addon-within rounded-full">
-			<input id="myInput" type="text" class="form-control border-none" placeholder="Busqueda De Planner">
+			<input id="myInput" type="text" class="form-control border-none" onkeyup="filterTextInput()" placeholder="Busqueda De Planner">
 			<button type="button"
 					class="btn btn-link text-gray-300 dark:text-gray-700 dark:hover:text-primary text-xl leading-none la la-search ltr:mr-4 rtl:ml-4"></button>
 		</label>
