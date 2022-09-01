@@ -128,7 +128,7 @@ class ScanModel extends CI_Model{
 		$this->db->select('COUNT(id) as cuenta,locations.location_name,type');
 		$this->db->from('scans');
 		$this->db->join('locations', 'scans.location = locations.location_id', 'left');
-		$this->db->where('mod(type,2) <> 0;');
+		$this->db->where('mod(type,2) <> ', 0);
 		$this->db->group_by('locations.location_name');
 		$query = $this->db->get();
 
