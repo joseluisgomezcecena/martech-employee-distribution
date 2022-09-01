@@ -112,10 +112,10 @@
 										<?php
 										$type = $scan['type'];
 										if($type % 2 == 0) {
-											echo "Entrada";
+											echo "Salida";
 										}
 										else{
-											echo "Salida";
+											echo "Entrada";
 										}
 										?>
 									</td>
