@@ -10,15 +10,24 @@
 
 
 
-<div class="grid lg:grid-cols-2 gap-5">
+<div class="grid lg:grid-cols-1 gap-5">
 
 	<!-- Summaries -->
-	<div class="grid sm:grid-cols-3 gap-5">
+	<div class="grid sm:grid-cols-4 gap-5">
 		<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
 			<a href="<?php echo base_url() ?>scans/location">
 				<div>
 					<span class="text-primary text-5xl leading-none la la-id-card"></span>
-					<p class="mt-2">Asistencia</p>
+					<p class="mt-2">Asistencia Por Gafete</p>
+					<div class="text-primary mt-5 text-3xl leading-none"></div>
+				</div>
+			</a>
+		</div>
+		<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
+			<a href="<?php echo base_url() ?>keyboards/location">
+				<div>
+					<span class="text-primary text-5xl leading-none la la-keyboard-o"></span>
+					<p class="mt-2">Asistencia Por Captura</p>
 					<div class="text-primary mt-5 text-3xl leading-none"></div>
 				</div>
 			</a>

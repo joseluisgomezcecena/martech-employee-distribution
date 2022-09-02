@@ -50,7 +50,7 @@ class Keyboards extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
 		$this->load->view('templates/workspace_start');
-		$this->load->view('scans/locations', $data);
+		$this->load->view('keyboards/locations', $data);
 		$this->load->view('templates/footer');
 	}
 

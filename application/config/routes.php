@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['scans/new/(:any)'] = 'scans/create/$1';
 $route['scans/location'] = 'scans/location';
 
-$route['keyboards/location'] = 'keyboards/index';
 $route['keyboards/new/(:any)'] = 'keyboards/create/$1';
+$route['keyboards/location'] = 'keyboards/location';
 
 
 //reports
