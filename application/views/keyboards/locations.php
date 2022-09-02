@@ -1,10 +1,10 @@
 
 <section class="breadcrumb">
-	<h1>Escaneo de Gafetes</h1>
+	<h1>Captura Manual de Empleados</h1>
 	<ul>
 		<li><a href="#">Elección de Ubicación</a></li>
 		<li class="divider la la-arrow-right"></li>
-		<li>Escaneo de Gafetes</li>
+		<li>Captura Manual de Empleados</li>
 	</ul>
 </section>
 
@@ -22,7 +22,7 @@
 
 		<div class="div" data-content="<?php echo $location['planner_id'] ?>">
 			<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
-				<a href="<?php echo base_url() ?>scans/new/<?php echo $location['location_id'] ?>">
+				<a href="<?php echo base_url() ?>keyboards/new/<?php echo $location['location_id'] ?>">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
 						<p class="mt-2"><?php echo $location['location_name'] ?></p>
