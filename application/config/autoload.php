@@ -145,4 +145,5 @@ $autoload['model'] =
 		'InsertPartsModel',
 		'EngineeringModel',
 		'ScanModel',
+		'KeyBoardModel',
 	);

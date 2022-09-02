@@ -32,10 +32,10 @@
 
 
 		<div class="card p-5 min-w-0">
-			<h3>Escanea tu Gafete</h3>
+			<h3>Escanea tu Gafete turno: <?php echo $shift; ?></h3>
 			<div class="mt-5 min-w-0">
 
-				<?php echo form_open('scans/create/' . $location['location_id']) ?>
+				<?php echo form_open(base_url() . 'scans/create/' . $location['location_id']) ?>
 
 				<div class=""></div>
 

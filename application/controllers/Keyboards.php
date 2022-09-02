@@ -1,6 +1,6 @@
 <?php
 
-class Scans extends CI_Controller {
+class Keyboards extends CI_Controller {
 
 	public function create($location = NULL)
 	{
@@ -10,6 +10,7 @@ class Scans extends CI_Controller {
 		$data['shift'] = $this->ScanModel->get_shift(date('H:i:s'));
 
 		$this->form_validation->set_rules('work_id', 'Numero de empleado', 'required');
+		$this->form_validation->set_rules('date', 'Fecha y Hora', 'required');
 
 
 
@@ -25,17 +26,17 @@ class Scans extends CI_Controller {
 			$this->load->view('templates/header');
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/workspace_start');
-			$this->load->view('scans/create', $data);
+			$this->load->view('keyboards/create', $data);
 			$this->load->view('templates/footer');
 		}
 		else
 		{
 
-			$this->ScanModel->create();
+			$this->KeyBoardModel->create();
 
 			//session message
 			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id'));
-			redirect(base_url() . 'scans/new/' . $location);
+			redirect(base_url() . 'keyboards/new/' . $location);
 		}
 
 	}
