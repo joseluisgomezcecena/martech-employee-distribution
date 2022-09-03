@@ -25,7 +25,13 @@ class KeyBoardModel extends CI_Model{
 		}
 
 		$emp_number = $this->input->post('work_id');
-		$date = date('Y-m-d');
+		$date_time = $this->input->post('date');
+
+		$date = date('Y-m-d', strtotime($date_time));
+
+
+
+		//$date = date('Y-m-d');
 
 		$this->db->order_by('id', 'DESC');
 		$this->db->select('*');

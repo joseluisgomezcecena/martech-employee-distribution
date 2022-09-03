@@ -42,7 +42,7 @@
 
 				<div class="mb-5 xl:w-1/2">
 					<label class="label block mb-2" for="slug">Fecha y Hora de Entrada</label>
-					<input id="slug" type="datetime-local" class="form-control">
+					<input id="date" name="date" type="datetime-local" class="form-control">
 				</div>
 
 				<div class="">
