@@ -9,7 +9,14 @@ class KeyBoardModel extends CI_Model{
 
 	public function create()
 	{
-		$shift = $this->get_shift(date('H:i:s'));
+
+		//$shift = $this->get_shift(date('H:i:s'));
+
+		$emp_number = $this->input->post('work_id');
+		$date_time = $this->input->post('date');
+		$date = date('Y-m-d', strtotime($date_time));
+
+		$shift = $this->get_shift(date('H:i:s', strtotime($date_time)));
 
 		if($shift == 1)
 		{
@@ -23,11 +30,6 @@ class KeyBoardModel extends CI_Model{
 		{
 			$end = '05:59:59';
 		}
-
-		$emp_number = $this->input->post('work_id');
-		$date_time = $this->input->post('date');
-
-		$date = date('Y-m-d', strtotime($date_time));
 
 
 
@@ -50,29 +52,31 @@ class KeyBoardModel extends CI_Model{
 			$check_in = $data_result['check_in'];
 
 			$t1 = strtotime($check_in);
-			$t2 = strtotime(date('Y-m-d H:i:s'));
+			$t2 = strtotime($date_time);
 			$diff = $t2 - $t1;
 			$hours = $diff / ( 60 * 60 );
 
 			//updating the record for checkout before checking in.
 			$data_update = array(
-				'check_out' => date('Y-m-d H:i:s'),
+				'check_out' => $date_time,
 				'hours_worked' => $hours,
 				'type' => 2,
 			);
 			$this->db->update('scans', $data_update, array('id' => $id));
 
+
+
 			//checking in to the new location.
-			$t1 = strtotime(date('Y-m-d H:i:s'));
-			$t2 = strtotime(date('Y-m-d') . ' '. $end);
+			$t1 = strtotime($date_time);
+			$t2 = strtotime($date . ' '. $end);
 			$diff = $t2 - $t1;
 			$hours = $diff / ( 60 * 60 );
 
 			$data = array(
 				'emp_number' => $this->input->post('work_id'),
 				'location' => $this->input->post('location_id'),
-				'check_in' => date('Y-m-d H:i:s'),
-				'check_out' => date('Y-m-d' . ' '. $end),
+				'check_in' => $date_time,
+				'check_out' => $date . ' '. $end,
 				'type' => 1,
 				'hours_worked' => $hours,
 			);
@@ -82,16 +86,16 @@ class KeyBoardModel extends CI_Model{
 		else
 		{
 			//checking in to the new location if there were no previous records.
-			$t1 = strtotime(date('Y-m-d H:i:s'));
-			$t2 = strtotime(date('Y-m-d') . ' '. $end);
+			$t1 = strtotime($date_time);
+			$t2 = strtotime($date . ' '. $end);
 			$diff = $t2 - $t1;
 			$hours = $diff / ( 60 * 60 );
 
 			$data = array(
 				'emp_number' => $this->input->post('work_id'),
 				'location' => $this->input->post('location_id'),
-				'check_in' => date('Y-m-d H:i:s'),
-				'check_out' => date('Y-m-d' . ' '. $end),
+				'check_in' => $date_time,
+				'check_out' => $date . ' '. $end,
 				'type' => 1,
 				'hours_worked' => $hours,
 			);
@@ -100,6 +104,10 @@ class KeyBoardModel extends CI_Model{
 		return $id = $this->db->insert('scans', $data);
 
 	}
+
+
+
+
 
 
 	public function get_shift($date){
