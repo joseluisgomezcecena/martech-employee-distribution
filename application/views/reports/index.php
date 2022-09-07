@@ -49,32 +49,27 @@
 				<div class="white-box analytics-info">
 					<h3 class="box-title">Registros</h3>
 					<div class="">
-						<table style="width: 100%" id="entries-list" class="table">
+						<table style="width: 100%" id="entries-list" class="table table_hoverable table_striped">
 							<thead>
 							<th>ID</th>
 							<th>Numero de empleado</th>
 							<th>Ubicación</th>
+							<th>Entrada</th>
+							<th>Salida</th>
+							<th>Horas trabajadas</th>
 							<th>Fecha de registro</th>
-							<th>Tipo</th>
+
 							</thead>
 							<tbody>
 							<?php foreach ($scans as $scan): ?>
 								<tr>
-									<td><?php echo $scan['id']; ?></td>
-									<td><?php echo $scan['emp_number']; ?></td>
-									<td><?php echo $scan["location_name"]; ?></td>
-									<td><?php echo $scan["created_at"]; ?></td>
-									<td>
-										<?php
-										$type = $scan['type'];
-										if($type % 2 == 0) {
-											echo "Salida";
-										}
-										else{
-											echo "Entrada";
-										}
-										?>
-									</td>
+									<td class="text-center justify-center items-center"><?php echo $scan['id']; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $scan['emp_number']; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $scan["location_name"]; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $scan["check_in"]; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $scan["check_out"]; ?></td>
+									<td class="text-center justify-center items-center"><?php echo round($scan["hours_worked"],2) ; ?></td>
+									<td class="text-center justify-center items-center"><?php echo $scan["created_at"]; ?></td>
 								</tr>
 							<?php endforeach ?>
 							</tbody>
