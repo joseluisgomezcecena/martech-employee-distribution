@@ -29,9 +29,6 @@ class KeyBoardModel extends CI_Model{
 		}
 
 
-
-		//$date = date('Y-m-d');
-
 		$this->db->order_by('id', 'DESC');
 		$this->db->select('*');
 		$this->db->from('scans');
@@ -99,15 +96,6 @@ class KeyBoardModel extends CI_Model{
 		}
 
 		return $id = $this->db->insert('scans', $data);
-
 	}
-
-
-
-
-
-
-
-
 
 }
