@@ -43,6 +43,8 @@ class Keyboards extends CI_Controller {
 
 
 
+
+
 	public function location()
 	{
 		$data['title'] = 'Locations';
@@ -57,6 +59,17 @@ class Keyboards extends CI_Controller {
 
 
 
+	public function type()
+	{
+		$data['title'] = 'Type of registration.';
+
+
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('templates/workspace_start');
+		$this->load->view('keyboards/type', $data);
+		$this->load->view('templates/footer');
+	}
 
 
 

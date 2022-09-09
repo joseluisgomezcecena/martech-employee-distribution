@@ -24,7 +24,7 @@
 			</a>
 		</div>
 		<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
-			<a href="<?php echo base_url() ?>keyboards/location">
+			<a href="<?php echo base_url() ?>keyboards/type">
 				<div>
 					<span class="text-primary text-5xl leading-none la la-keyboard-o"></span>
 					<p class="mt-2">Asistencia Por Captura</p>
@@ -32,6 +32,7 @@
 				</div>
 			</a>
 		</div>
+
 		<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
 			<a href="<?php echo base_url() ?>reports">
 				<div>

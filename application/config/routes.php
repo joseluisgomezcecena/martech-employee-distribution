@@ -10,11 +10,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //inputs for barcode scanners.
 $route['scans/new/(:any)'] = 'scans/create/$1';
+
+$route['scans/type'] = 'scans/type';
+
 $route['scans/location'] = 'scans/location';
 
 //inputs for keyboard.
 $route['keyboards/new/(:any)'] = 'keyboards/create/$1';
-$route['keyboards/location'] = 'keyboards/location';
+
+$route['keyboards/type'] = 'keyboards/type';
+
+$route['keyboards/location/(:any)'] = 'keyboards/location/$1';
 
 
 //reports.
