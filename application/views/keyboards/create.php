@@ -28,6 +28,11 @@
 	<!-- Content -->
 	<div class="lg:col-span-4 xl:col-span-4">
 		<div class="card p-5">
+
+			<h3 class="mt-5 mb-5">
+				Celda: <b class="text-primary"><?php echo $location['location_name'] ?></b>
+				Planning Group: <b class="text-primary"><?php echo $location['planner_id'] ?></b>
+			</h3>
 			<?php echo validation_errors(); ?>
 
 			<?php echo form_open(base_url() . 'keyboards/create/' . $location['location_id']) ?>
@@ -40,9 +45,9 @@
 					<input id="work_id" name="work_id" type="text" class="form-control">
 				</div>
 
-				<div class="mb-5 xl:w-1/2">
+				<div style="opacity: 0" class="mb-5 xl:w-1/2">
 					<label class="label block mb-2" for="slug">Fecha y Hora de Entrada</label>
-					<input id="date" name="date" type="datetime-local" class="form-control">
+					<input id="date" name="date" type="datetime-local" class="form-control" value="<?php echo date("Y-m-d H:i:s"); ?>" readonly>
 				</div>
 
 				<div class="">

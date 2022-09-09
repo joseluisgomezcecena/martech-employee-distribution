@@ -14,7 +14,7 @@
 	<link rel="icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="192x192">
 
 	<!-- Android -->
-	<link rel="shortcut icon"href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="196x196">
+	<link rel="shortcut icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="196x196">
 
 	<!-- iOS -->
 	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="152x152">
@@ -22,7 +22,10 @@
 	<link rel="apple-touch-icon" href="<?php echo  base_url() ?>assets/img/icon.jpg" sizes="180x180">
 
 	<link rel="stylesheet" href="<?php echo  base_url() ?>assets/css/style.css" />
+	<link rel="stylesheet" href="<?php echo  base_url() ?>assets/datatables/dataTables.css" />
+	<!--
 	<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+	-->
 	<style>
 		.menu-bar.menu-wide .menu-items .menu-detail{
 			overflow: overlay;
