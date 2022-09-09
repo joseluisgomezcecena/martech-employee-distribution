@@ -19,7 +19,9 @@
 <script src="<?php echo base_url() ?>assets/datatables/jquery.js"></script>
 
 <script src="<?php echo  base_url() ?>assets/js/vendor.js"></script>
+<!--
 <script src="<?php echo  base_url() ?>assets/js/chart.min.js"></script>
+-->
 <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1"></script> -->
 <script src="<?php echo  base_url() ?>assets/js/script.js"></script>
 <!--
