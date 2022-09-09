@@ -7,13 +7,13 @@ class KeyBoardModel extends CI_Model{
 		$this->load->database();
 	}
 
-	public function create()
+	public function create($shift)
 	{
 		$emp_number = $this->input->post('work_id');
 		$date_time = $this->input->post('date');
 		$date = date('Y-m-d', strtotime($date_time));
 
-		$shift = $this->get_shift(date('H:i:s', strtotime($date_time)));
+		//$shift = $this->get_shift(date('H:i:s', strtotime($date_time)));
 
 		if($shift == 1)
 		{

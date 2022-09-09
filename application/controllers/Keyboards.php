@@ -7,7 +7,7 @@ class Keyboards extends CI_Controller {
 		$data['title'] = 'Crear nuevo request';
 		$data['location_id'] = $location;
 		$data['location'] = $this->ScanModel->get_single_location($location);
-		$data['shift'] = $this->ScanModel->get_shift(date('H:i:s'));
+		$shift = $data['shift'] = $this->ScanModel->get_shift(date('H:i:s'));
 
 		$this->form_validation->set_rules('work_id', 'Numero de empleado', 'required');
 		$this->form_validation->set_rules('date', 'Fecha y Hora', 'required');
@@ -32,7 +32,7 @@ class Keyboards extends CI_Controller {
 		else
 		{
 
-			$this->KeyBoardModel->create();
+			$this->KeyBoardModel->create($shift);
 
 			//session message
 			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id'));
