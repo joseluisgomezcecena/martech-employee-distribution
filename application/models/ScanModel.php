@@ -101,51 +101,42 @@ class ScanModel extends CI_Model{
 		if($type == 'regular')
 		{
 			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('15:36:00'))){
-				$shift = 1;
+				$shift = "reg1";
 			}
 			elseif($date > date('H:i:s', strtotime('15:36:00')) && $date <= date('H:i:s', strtotime('23:35:00'))){
-				$shift = 2;
+				$shift = "reg2";
 			}
 			else
 			{
-				$shift = 3;
+				$shift = "reg3";
 			}
 		}
 		elseif ($type == 'rotating')
 		{
 			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('18:00:00')))
 			{
-				$shift = 1;
+				$shift = "rot1";
 			}
 			else
 			{
-				$shift = 2;
+				$shift = "rot2";
 			}
 		}
 		elseif ($type == 'overtime')
 		{
-			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('15:36:00'))){
-				$shift = 1;
-			}
-			elseif($date > date('H:i:s', strtotime('15:36:00')) && $date <= date('H:i:s', strtotime('23:35:00'))){
-				$shift = 2;
-			}
-			else
-			{
-				$shift = 3;
-			}
+			$shift = "ot1";
 		}
 		elseif ($type == 'weekend')
 		{
 			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('15:36:00'))){
-				$shift = 1;
+				$shift = "w1";
 			}
 			elseif($date > date('H:i:s', strtotime('15:36:00')) && $date <= date('H:i:s', strtotime('23:35:00'))){
-				$shift = 2;
+				$shift = "w2";
 			}
 			else
 			{
-				$shift = 3;
+				$shift = "w3";
 			}
 		}
 		else

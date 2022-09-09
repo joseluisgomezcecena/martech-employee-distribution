@@ -13,20 +13,42 @@ class KeyBoardModel extends CI_Model{
 		$date_time = $this->input->post('date');
 		$date = date('Y-m-d', strtotime($date_time));
 
-		if($this->input->post('type') == 'regular')
+
+		if($shift == "reg1")
 		{
-			if($shift == 1)
-			{
-				$end = '15:36:00';
-			}
-			elseif($shift == 2)
-			{
-				$end = '23:30:00';
-			}
-			else
-			{
-				$end = '05:59:59';
-			}
+			$end = '15:36:00';
+		}
+		elseif($shift == "reg2")
+		{
+			$end = '23:30:00';
+		}
+		elseif($shift == "reg3")
+		{
+			$end = '05:59:59';
+		}
+		elseif ($shift == "rot1")
+		{
+			$end = '18:00:00';
+		}
+		elseif ($shift == "rot2")
+		{
+			$end = '06:00:00';
+		}
+		elseif ($shift == "ot1")
+		{
+			$end = '23:59:59';
+		}
+		if($shift == "w1")
+		{
+			$end = '15:36:00';
+		}
+		elseif($shift == "w2")
+		{
+			$end = '23:30:00';
+		}
+		elseif($shift == "w3")
+		{
+			$end = '05:59:59';
 		}
 
 
