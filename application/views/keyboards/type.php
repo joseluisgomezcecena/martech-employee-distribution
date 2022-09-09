@@ -29,7 +29,7 @@
 
 		<div class="div" data-content="">
 			<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
-				<a href="<?php echo base_url() ?>keyboards/location/tresxcuatro">
+				<a href="<?php echo base_url() ?>keyboards/location/rotating">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
 						<p class="mt-2">Horario 3 X 4</p>
@@ -44,7 +44,7 @@
 
 		<div class="div" data-content="">
 			<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
-				<a href="<?php echo base_url() ?>keyboards/location/extra">
+				<a href="<?php echo base_url() ?>keyboards/location/overtime">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
 						<p class="mt-2">Tiempo Extra</p>

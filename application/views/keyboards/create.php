@@ -35,10 +35,10 @@
 			</h3>
 			<?php echo validation_errors(); ?>
 
-			<?php echo form_open(base_url() . 'keyboards/create/' . $location['location_id']) ?>
+			<?php echo form_open(base_url() . 'keyboards/create/' . $location['location_id'] . '/' . $type)  ?>
 
 				<input type="hidden" name="location_id" value="<?php echo $location['location_id'] ?>">
-				<input type="text" name="type" value="<?php echo $type ?>">
+				<input type="hidden" name="type" value="<?php echo $type ?>">
 
 				<div class="mb-5 xl:w-1/2">
 					<label class="label block mb-2" for="title">Numero de Empleado</label>

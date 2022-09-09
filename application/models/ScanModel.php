@@ -96,18 +96,64 @@ class ScanModel extends CI_Model{
 	}
 
 
-	public function get_shift($date){
+	public function get_shift($date, $type){
 
-		if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('15:36:00'))){
-			$shift = 1;
+		if($type == 'regular')
+		{
+			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('15:36:00'))){
+				$shift = 1;
+			}
+			elseif($date > date('H:i:s', strtotime('15:36:00')) && $date <= date('H:i:s', strtotime('23:35:00'))){
+				$shift = 2;
+			}
+			else
+			{
+				$shift = 3;
+			}
 		}
-		elseif($date > date('H:i:s', strtotime('15:36:00')) && $date <= date('H:i:s', strtotime('23:35:00'))){
-			$shift = 2;
+		elseif ($type == 'rotating')
+		{
+			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('18:00:00')))
+			{
+				$shift = 1;
+			}
+			else
+			{
+				$shift = 2;
+			}
+		}
+		elseif ($type == 'overtime')
+		{
+			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('15:36:00'))){
+				$shift = 1;
+			}
+			elseif($date > date('H:i:s', strtotime('15:36:00')) && $date <= date('H:i:s', strtotime('23:35:00'))){
+				$shift = 2;
+			}
+			else
+			{
+				$shift = 3;
+			}
+		}
+		elseif ($type == 'weekend')
+		{
+			if($date > date('H:i:s', strtotime('06:00:00')) && $date <= date('H:i:s', strtotime('15:36:00'))){
+				$shift = 1;
+			}
+			elseif($date > date('H:i:s', strtotime('15:36:00')) && $date <= date('H:i:s', strtotime('23:35:00'))){
+				$shift = 2;
+			}
+			else
+			{
+				$shift = 3;
+			}
 		}
 		else
 		{
-			$shift = 3;
+			$shift = 0;
 		}
+
+
 		return $shift;
 	}
 
