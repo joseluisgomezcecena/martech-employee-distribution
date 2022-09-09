@@ -2,10 +2,11 @@
 
 class Keyboards extends CI_Controller {
 
-	public function create($location = NULL)
+	public function create($location = NULL, $type = NULL)
 	{
 		$data['title'] = 'Crear nuevo request';
 		$data['location_id'] = $location;
+		$data['type'] = $type;
 		$data['location'] = $this->ScanModel->get_single_location($location);
 		$shift = $data['shift'] = $this->ScanModel->get_shift(date('H:i:s'));
 
@@ -45,10 +46,12 @@ class Keyboards extends CI_Controller {
 
 
 
-	public function location()
+	public function location($type = NULL)
 	{
 		$data['title'] = 'Locations';
 		$data['locations'] = $this->ScanModel->get_locations();
+		$data['type'] = $type;
+
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
 		$this->load->view('templates/workspace_start');

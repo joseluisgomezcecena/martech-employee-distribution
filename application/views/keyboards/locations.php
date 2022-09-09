@@ -22,7 +22,7 @@
 
 		<div class="div" data-content="<?php echo $location['planner_id'] ?>">
 			<div class="card px-4 py-8 flex justify-center items-center text-center lg:transform hover:scale-110 hover:shadow-lg transition-transform duration-200">
-				<a href="<?php echo base_url() ?>keyboards/new/<?php echo $location['location_id'] ?>">
+				<a href="<?php echo base_url() ?>keyboards/new/<?php echo $location['location_id'] ?>/<?php echo $type ?>">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
 						<p class="mt-2"><?php echo $location['location_name'] ?></p>

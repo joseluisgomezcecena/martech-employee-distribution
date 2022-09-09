@@ -16,7 +16,7 @@ $route['scans/type'] = 'scans/type';
 $route['scans/location'] = 'scans/location';
 
 //inputs for keyboard.
-$route['keyboards/new/(:any)'] = 'keyboards/create/$1';
+$route['keyboards/new/(:any)/(:any)'] = 'keyboards/create/$1/$2';
 
 $route['keyboards/type'] = 'keyboards/type';
 
