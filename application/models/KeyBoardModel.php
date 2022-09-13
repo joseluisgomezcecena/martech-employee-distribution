@@ -7,10 +7,13 @@ class KeyBoardModel extends CI_Model{
 		$this->load->database();
 	}
 
+
 	public function create($shift)
 	{
 		$emp_number = $this->input->post('work_id');
+
 		$date_time = $this->input->post('date');
+
 		$date = date('Y-m-d', strtotime($date_time));
 
 
@@ -50,6 +53,7 @@ class KeyBoardModel extends CI_Model{
 		{
 			$end = '05:59:59';
 		}
+
 
 
 

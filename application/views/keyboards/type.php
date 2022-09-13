@@ -18,8 +18,8 @@
 				<a href="<?php echo base_url() ?>keyboards/location/regular">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
-						<p class="mt-2">Horario Normal</p>
-						<div class="text-dark mt-5 text-xl leading-none">Para 1er, 2do y 3er turno.</div>
+						<p class="mt-2 text-xl">Horario Normal</p>
+						<div class="text-dark mt-5 text-gray-600 leading-none">Para 1er, 2do y 3er turno.</div>
 					</div>
 				</a>
 			</div>
@@ -32,8 +32,8 @@
 				<a href="<?php echo base_url() ?>keyboards/location/rotating">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
-						<p class="mt-2">Horario 3 X 4</p>
-						<div class="text-dark mt-5 text-xl leading-none">Para Horarios 3 x 4.</div>
+						<p class="mt-2 text-xl">Horario 3 X 4</p>
+						<div class="text-dark mt-5 text-gray-600 leading-none">Para Horarios 3 x 4.</div>
 					</div>
 				</a>
 			</div>
@@ -47,8 +47,8 @@
 				<a href="<?php echo base_url() ?>keyboards/location/overtime">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
-						<p class="mt-2">Tiempo Extra</p>
-						<div class="text-dark mt-5 text-xl leading-none">Para Tiempos Extra.</div>
+						<p class="mt-2 text-xl">Tiempo Extra</p>
+						<div class="text-dark mt-5 text-gray-600 leading-none">Para Tiempos Extra.</div>
 					</div>
 				</a>
 			</div>
@@ -61,8 +61,8 @@
 				<a href="<?php echo base_url() ?>keyboards/location/weekend">
 					<div>
 						<span class="text-primary text-5xl leading-none la la-id-card"></span>
-						<p class="mt-2">Fin de Semana</p>
-						<div class="text-dark mt-5 text-xl leading-none">Para Fines de Semana.</div>
+						<p class="mt-2 text-xl">Fin de Semana</p>
+						<div class="text-dark text-gray-600  mt-5  leading-none">Para Fines de Semana.</div>
 					</div>
 				</a>
 			</div>

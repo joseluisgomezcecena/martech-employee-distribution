@@ -135,15 +135,8 @@ $autoload['language'] = array();
 $autoload['model'] =
 	array(
 		'UserModel',
-		'HorasModel',
 		'ReportModel',
-		'EntryModel',
-		'LocationModel',
-		'FormModel',
-		'SupModel',
-		'ToolCribModel',
-		'InsertPartsModel',
-		'EngineeringModel',
 		'ScanModel',
 		'KeyBoardModel',
+		'ShiftModel',
 	);

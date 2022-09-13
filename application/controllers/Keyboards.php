@@ -3,7 +3,6 @@
 class Keyboards extends CI_Controller {
 
 
-
 	public function create($location = NULL, $type = NULL)
 	{
 		$data['title'] = 'Crear nuevo request';
@@ -34,12 +33,11 @@ class Keyboards extends CI_Controller {
 		}
 		else
 		{
-
 			$this->KeyBoardModel->create($shift);
 
 			//session message
 			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id'));
-			redirect(base_url() . 'keyboards/new/' . $location);
+			redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
 		}
 
 	}

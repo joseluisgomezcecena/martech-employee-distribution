@@ -144,8 +144,11 @@ class ScanModel extends CI_Model{
 			$shift = 0;
 		}
 
-
-		return $shift;
+		//return $shift;
+		return array(
+			'shift' => $shift,
+			'type' => $type,
+		);
 	}
 
 
