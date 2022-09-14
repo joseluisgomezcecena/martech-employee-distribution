@@ -81,6 +81,8 @@ class KeyBoardModel extends CI_Model{
 			$this->db->where('created_at <=', $date . " 23:59:59");
 			$this->db->limit(1);
 
+			$query = $this->db->get();
+
 			if($query->num_rows() > 0)
 			{
 				$data_result =  $query->row_array();
