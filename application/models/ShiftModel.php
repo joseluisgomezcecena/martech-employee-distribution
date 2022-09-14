@@ -18,20 +18,24 @@ class ShiftModel extends CI_Model{
 				)
 				{
 					$shift = "reg1";
+					$end = '15:36:00';
 				}
 				elseif
 				(
 					$date > date('H:i:s', strtotime('15:36:00'))
-					&& $date <= date('H:i:s', strtotime('23:35:00'))
+					&& $date <= date('H:i:s', strtotime('23:35:59'))
 				)
 				{
 					$shift = "reg2";
+					$end = '23:35:59';
 				}
 				else
 				{
 					$shift = "reg3";
+					$end = '05:59:59';
 				}
 				break;
+
 
 			case 'rotating':
 				if(
@@ -40,16 +44,21 @@ class ShiftModel extends CI_Model{
 				)
 				{
 					$shift = "rot1";
+					$end = '18:00:00';
 				}
 				else
 				{
 					$shift = "rot2";
+					$end = '05:59:59';
 				}
 				break;
 
+
 			case 'overtime':
 				$shift = "ot1";
+				$end = '00:00:00';
 				break;
+
 
 			case 'weekend':
 				if(
@@ -58,6 +67,7 @@ class ShiftModel extends CI_Model{
 				)
 				{
 					$shift = "w1";
+					$end = '15:36:00';
 				}
 				elseif(
 					$date > date('H:i:s', strtotime('15:36:00')) &&
@@ -65,16 +75,19 @@ class ShiftModel extends CI_Model{
 				)
 				{
 					$shift = "w2";
+					$end = '23:35:00';
 				}
 				else
 				{
 					$shift = "w3";
+					$end = '05:59:59';
 				}
 				break;
 
 
 			default:
 				$shift = 'N/A';
+				$end = 'N/A';
 				break;
 
 		}
@@ -82,6 +95,7 @@ class ShiftModel extends CI_Model{
 		return array(
 			'shift' => $shift,//'reg1',reg2,reg3,rot1,rot2,ot1,w1,w2,w3
 			'type' => $type, //regular, rotating, overtime, weekend
+			'end' => $end //end of shift
 		);
 
 	}

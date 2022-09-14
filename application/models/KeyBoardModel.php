@@ -10,63 +10,43 @@ class KeyBoardModel extends CI_Model{
 
 	public function create($shift)
 	{
-		$emp_number = $this->input->post('work_id');
+		$emp_number  = $this->input->post('work_id');
+		$location_id = $this->input->post('location_id');
 
 		$date_time = $this->input->post('date');
-
 		$date = date('Y-m-d', strtotime($date_time));
+		$date_third = date('Y-m-d', strtotime($date_time . ' -1 day'));
+
+		$wshift =  $shift['shift'];
+		$type   =  $shift['type'];
+		$end    =  $shift['end'];
 
 
-		if($shift == "reg1")
+		//from 11:30pm to 5:59am
+		/*
+		if($type == 'regular')
 		{
-			$end = '15:36:00';
+			if($wshift == 'reg3')
+			{
+				if($date_time <= $date . ' 00:00:00' && $date_time >= $date_third . ' 23:59:59')
+				{
+					$date = $date_third;
+				}
+			}
 		}
-		elseif($shift == "reg2")
-		{
-			$end = '23:30:00';
-		}
-		elseif($shift == "reg3")
-		{
-			$end = '05:59:59';
-		}
-		elseif ($shift == "rot1")
-		{
-			$end = '18:00:00';
-		}
-		elseif ($shift == "rot2")
-		{
-			$end = '06:00:00';
-		}
-		elseif ($shift == "ot1")
-		{
-			$end = '23:59:59';
-		}
-		if($shift == "w1")
-		{
-			$end = '15:36:00';
-		}
-		elseif($shift == "w2")
-		{
-			$end = '23:30:00';
-		}
-		elseif($shift == "w3")
-		{
-			$end = '05:59:59';
-		}
-
-
-
-
+		*/
 
 		$this->db->order_by('id', 'DESC');
 		$this->db->select('*');
 		$this->db->from('scans');
 		$this->db->where('emp_number', $emp_number);
+		$this->db->where('location', $location_id);//added to keep track of location
 		$this->db->where('created_at >=', $date . " 00:00:00");
 		$this->db->where('created_at <=', $date . " 23:59:59");
 		$this->db->limit(1);
 
 		$query = $this->db->get();
+
 
 		if($query->num_rows() > 0)
 		{
@@ -83,32 +63,16 @@ class KeyBoardModel extends CI_Model{
 			$data_update = array(
 				'check_out' => $date_time,
 				'hours_worked' => $hours,
-				'type' => 2,
+				'check_out_by'=> 'Manual',
 			);
 			$this->db->update('scans', $data_update, array('id' => $id));
-
-
-
-			//checking in to the new location.
-			$t1 = strtotime($date_time);
-			$t2 = strtotime($date . ' '. $end);
-			$diff = $t2 - $t1;
-			$hours = $diff / ( 60 * 60 );
-
-			$data = array(
-				'emp_number' => $this->input->post('work_id'),
-				'location' => $this->input->post('location_id'),
-				'check_in' => $date_time,
-				'check_out' => $date . ' '. $end,
-				'type' => 1,
-				'hours_worked' => $hours,
-			);
-
-
 		}
 		else
 		{
 			//checking in to the new location if there were no previous records.
+
+
+
 			$t1 = strtotime($date_time);
 			$t2 = strtotime($date . ' '. $end);
 			$diff = $t2 - $t1;
@@ -119,13 +83,23 @@ class KeyBoardModel extends CI_Model{
 				'location' => $this->input->post('location_id'),
 				'check_in' => $date_time,
 				'check_out' => $date . ' '. $end,
-				'type' => 1,
+				'type' => $type,
 				'hours_worked' => $hours,
+				'schedule' => $wshift,
+				'check_out_by'=> 'System',
 			);
+
+			$this->db->insert('scans', $data);
 		}
 
-		return $id = $this->db->insert('scans', $data);
+		//return $id = $this->db->insert('scans', $data);
+		return true;
 	}
+
+
+
+
+
 
 
 	/*

@@ -9,7 +9,8 @@ class Keyboards extends CI_Controller {
 		$data['location_id'] = $location;
 		$data['type'] = $type;
 		$data['location'] = $this->ScanModel->get_single_location($location);
-		$shift = $data['shift'] = $this->ScanModel->get_shift(date('H:i:s'), $type);
+		$shift = $data['shift'] = $this->ShiftModel->get_shift(date('H:i:s'), $type);
+
 
 		$this->form_validation->set_rules('work_id', 'Numero de empleado', 'required');
 		$this->form_validation->set_rules('date', 'Fecha y Hora', 'required');
