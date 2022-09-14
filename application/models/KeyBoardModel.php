@@ -70,9 +70,6 @@ class KeyBoardModel extends CI_Model{
 		else
 		{
 			//checking in to the new location if there were no previous records.
-
-
-
 			$t1 = strtotime($date_time);
 			$t2 = strtotime($date . ' '. $end);
 			$diff = $t2 - $t1;
@@ -92,7 +89,6 @@ class KeyBoardModel extends CI_Model{
 			$this->db->insert('scans', $data);
 		}
 
-		//return $id = $this->db->insert('scans', $data);
 		return true;
 	}
 

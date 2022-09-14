@@ -22,7 +22,7 @@
 			<span class="icon la la-id-card"></span>
 			<span class="title">Escanear Gafetes</span>
 		</a>
-		<a href="<?php echo base_url() ?>keyboards/location" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
+		<a href="<?php echo base_url() ?>keyboards/type" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
 		   data-tippy-content="Pages">
 			<span class="icon la la-keyboard"></span>
 			<span class="title">Captura Manual</span>
