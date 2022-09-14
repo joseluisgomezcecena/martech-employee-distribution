@@ -101,10 +101,32 @@ class KeyBoardModel extends CI_Model{
 					'check_out_by'=> 'Manual',
 				);
 				$this->db->update('scans', $data_update, array('id' => $id));
+
+
+				//after updating the record, we will insert a new record for the checkin.
+				$t1 = strtotime($date_time);
+				$t2 = strtotime($date . ' '. $end);
+				$diff = $t2 - $t1;
+				$hours = $diff / ( 60 * 60 );
+
+				$data = array(
+					'emp_number' => $this->input->post('work_id'),
+					'location' => $this->input->post('location_id'),
+					'check_in' => $date_time,
+					'check_out' => $date . ' '. $end,
+					'type' => $type,
+					'hours_worked' => $hours,
+					'schedule' => $wshift,
+					'check_out_by'=> 'System',
+				);
+
+				$this->db->insert('scans', $data);
+
+
 			}
 			else
 			{
-				//checking in to the new location if there were no previous records.
+				//checking in to the new location if there were no previous records. Works only for first time checkin. Or if employee checked out manually.
 				$t1 = strtotime($date_time);
 				$t2 = strtotime($date . ' '. $end);
 				$diff = $t2 - $t1;
