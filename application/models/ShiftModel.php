@@ -9,6 +9,8 @@ class ShiftModel extends CI_Model{
 
 	public function get_shift($date, $type){
 
+		$day = "";
+
 		switch ($type){
 			case 'regular':
 				if
