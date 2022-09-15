@@ -9,7 +9,8 @@ class ShiftModel extends CI_Model{
 
 	public function get_shift($date, $type){
 
-		$day = "";
+		//$day = date("Y-m-d");
+		$day = date("2022-09-15");
 
 		switch ($type){
 			case 'regular':
@@ -35,6 +36,7 @@ class ShiftModel extends CI_Model{
 				{
 					$shift = "reg3";
 					$end = '05:59:59';
+					$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
 				}
 				break;
 
@@ -52,6 +54,15 @@ class ShiftModel extends CI_Model{
 				{
 					$shift = "rot2";
 					$end = '05:59:59';
+					if(
+						$date >= date('H:i:s', strtotime('18:00:01'))
+						&& $date <= date('H:i:s', strtotime('23:59:59'))
+					)
+					{
+						$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
+					}
+
+					//$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
 				}
 				break;
 
@@ -97,7 +108,8 @@ class ShiftModel extends CI_Model{
 		return array(
 			'shift' => $shift,//'reg1',reg2,reg3,rot1,rot2,ot1,w1,w2,w3
 			'type' => $type, //regular, rotating, overtime, weekend
-			'end' => $end //end of shift
+			'end' => $end, //end of shift
+			'day' => $day //day of shift
 		);
 
 	}

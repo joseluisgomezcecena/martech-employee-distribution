@@ -1,6 +1,6 @@
 <?php
 
-class KeyBoardModel extends CI_Model{
+class KeyBoardModel_backup extends CI_Model{
 
 	public function __construct()
 	{
