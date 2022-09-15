@@ -117,7 +117,7 @@ class KeyBoardModel extends CI_Model{
 					'type' => $type,
 					'hours_worked' => $hours,
 					'schedule' => $wshift,
-					'check_out_by'=> 'System',
+					'check_out_by'=> 'System',//changed form system to manual. ???
 				);
 
 				$this->db->insert('scans', $data);
