@@ -28,7 +28,7 @@ $route['reports'] = 'reports/index';
 
 //records.
 //this is for editing records.
-$route['records/edit'] = 'records/edit';
+$route['records'] = 'records/index';
 $route['records/edit/(:any)'] = 'records/edit/$1';
 $route['records/delete/(:any)'] = 'records/delete/$1';
 

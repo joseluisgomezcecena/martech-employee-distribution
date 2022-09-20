@@ -10,7 +10,7 @@
 
 
 <div class="card p-4 flex flex-wrap gap-5">
-	<?php echo form_open(base_url() . 'reports/index', array('class' => 'form-horizontal')); ?>
+	<?php echo form_open(base_url() . 'records/index', array('class' => 'form-horizontal')); ?>
 	<div class="grid grid-cols-5 gap-4">
 		<div style="margin: 15px;">
 			<label class="col-sm-12">Fecha de inicio</label>
@@ -49,7 +49,7 @@
 				<div class="white-box analytics-info">
 					<h3 class="box-title">Registros</h3>
 					<div class="">
-						<table style="width: 100%" id="entries-list" class="table table_hoverable table_striped">
+						<table style="width: 100%; font-size: 10px;" id="entries-list" class="table table_hoverable table_striped">
 							<thead>
 							<th>ID</th>
 							<th>Numero de empleado</th>
@@ -58,6 +58,7 @@
 							<th>Salida</th>
 							<th>Horas trabajadas</th>
 							<th>Fecha de registro</th>
+							<th>Opciones</th>
 
 							</thead>
 							<tbody>
@@ -70,6 +71,10 @@
 									<td class="text-center justify-center items-center"><?php echo $scan["check_out"]; ?></td>
 									<td class="text-center justify-center items-center"><?php echo round($scan["hours_worked"],2) ; ?></td>
 									<td class="text-center justify-center items-center"><?php echo $scan["created_at"]; ?></td>
+									<td class="text-center justify-center items-center">
+										<a href="<?php echo base_url() ?>records/edit/<?php echo $scan['id']; ?>" class="btn_primary btn">Editar</a>
+										<a href="<?php echo base_url() ?>records/edit/<?php echo $scan['id']; ?>" class="btn btn_danger btn_outlined">Eliminar</a>
+									</td>
 								</tr>
 							<?php endforeach ?>
 							</tbody>
@@ -78,36 +83,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
-
-
-
-			<div class="col-lg-12 mt-5">
-				<div class="white-box analytics-info">
-					<h3 class="box-title">Registros por ubicación</h3>
-					<div class="table-responsive">
-						<table style="width: 100%" id="entries-list" class="table">
-							<thead>
-							<th>Ubicación</th>
-							<th>Cantidad de empleados</th>
-							</thead>
-							<tbody>
-							<?php foreach ($employees as $employee): ?>
-								<tr>
-									<td class="text-center justify-center items-center"><?php echo $employee['location_name']; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $employee['cuenta']; ?></td>
-								</tr>
-							<?php endforeach ?>
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-			</div>
-
 
 
 		</div>
