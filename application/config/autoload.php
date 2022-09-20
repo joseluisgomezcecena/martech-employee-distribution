@@ -139,4 +139,5 @@ $autoload['model'] =
 		'ScanModel',
 		'KeyBoardModel',
 		'ShiftModel',
+		'RecordModel',
 	);
