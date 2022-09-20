@@ -10,6 +10,7 @@ class ShiftModel extends CI_Model{
 	public function get_shift($date, $type){
 
 		$day = date("Y-m-d");
+		$day_end = date("Y-m-d"); //code review result.
 		//$day = date("2022-09-15"); //test
 
 		switch ($type){
@@ -39,7 +40,7 @@ class ShiftModel extends CI_Model{
 					$shift = "reg3";
 					$start = "23:35:59";
 					$end = '05:59:59';
-					$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
+					$day_end = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
 				}
 				break;
 
@@ -66,7 +67,7 @@ class ShiftModel extends CI_Model{
 						&& $date <= date('H:i:s', strtotime('23:59:59'))
 					)
 					{
-						$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
+						$day_end = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')); //changed to day end as result of code review.
 					}
 
 					//$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
@@ -103,7 +104,7 @@ class ShiftModel extends CI_Model{
 						&& $date <= date('H:i:s', strtotime('23:59:59'))
 					)
 					{
-						$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
+						$day_end = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')); //changed to day end as result of code review.
 					}
 
 					//$day = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
@@ -115,7 +116,7 @@ class ShiftModel extends CI_Model{
 				$shift = 'N/A';
 				$start = '00:00:00';
 				$end = '00:00:00';
-				$end = 'N/A';
+				//$end = 'N/A'; changed to 00:00:00 as result of code review.
 				break;
 
 		}
@@ -126,6 +127,7 @@ class ShiftModel extends CI_Model{
 			'start' => $start, //start of shift time
 			'end' => $end, //end of shift time
 			'day' => $day, //day of shift
+			'day_end'=> $day_end, //day of shift end
 			'hours'=> $date //in H:i:s format
 		);
 

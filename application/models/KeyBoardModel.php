@@ -26,9 +26,11 @@ class KeyBoardModel extends CI_Model{
 		$end    =  $shift['end'];
 		$start  =  $shift['start'];
 		$day	=  $shift['day'];
+		$day_end = $shift['day_end'];
 		$hours  =  $shift['hours'];
 
 		$date = date('Y-m-d', strtotime($day));
+		$date_end = date('Y-m-d', strtotime($day_end));
 
 
 
@@ -44,7 +46,7 @@ class KeyBoardModel extends CI_Model{
 		//$this->db->where('created_at <=', $date . " 23:59:59");
 
 		$this->db->where('created_at >=', $date . " " . $start);
-		$this->db->where('created_at <=', $date . " " . $end);
+		$this->db->where('created_at <=', $date_end . " " . $end);
 
 
 
