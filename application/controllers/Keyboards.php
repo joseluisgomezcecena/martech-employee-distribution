@@ -9,8 +9,8 @@ class Keyboards extends CI_Controller {
 		$data['location_id'] = $location;
 		$data['type'] = $type;
 		$data['location'] = $this->ScanModel->get_single_location($location);
-		//$shift = $data['shift'] = $this->ShiftModel->get_shift(date('H:i:s'), $type); //send shift to create function.
-		$shift = $data['shift'] = $this->ShiftModel->get_shift(date('23:25:25'), $type); //send shift to create function.
+		$shift = $data['shift'] = $this->ShiftModel->get_shift(date('H:i:s'), $type); //send shift to create function.
+		//$shift = $data['shift'] = $this->ShiftModel->get_shift(date('23:59:25'), $type); //test send shift to create function.
 
 		$this->form_validation->set_rules('work_id', 'Numero de empleado', 'required');
 		$this->form_validation->set_rules('date', 'Fecha y Hora', 'required');
@@ -38,7 +38,7 @@ class Keyboards extends CI_Controller {
 
 			//session message
 			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id'));
-			redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
+			//redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
 		}
 
 	}

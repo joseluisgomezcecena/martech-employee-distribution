@@ -15,8 +15,8 @@ class KeyBoardModel extends CI_Model{
 
 		//$date_time = $this->input->post('date');
 
-		//$date_time = date('Y-m-d H:i:s');
-		$date_time = date('2022-09-15 23:25:25');
+		$date_time = date('Y-m-d H:i:s');
+		//$date_time = date('2022-09-15 23:59:25'); //test
 
 		//$date = date('Y-m-d', strtotime($date_time));
 		//$date_third = date('Y-m-d', strtotime($date_time . ' -1 day'));
@@ -25,6 +25,7 @@ class KeyBoardModel extends CI_Model{
 		$type   =  $shift['type'];
 		$end    =  $shift['end'];
 		$day	=  $shift['day'];
+		$hours  =  $shift['hours'];
 
 		$date = date('Y-m-d', strtotime($day));
 
@@ -37,12 +38,23 @@ class KeyBoardModel extends CI_Model{
 		$this->db->where('emp_number', $emp_number);
 		$this->db->where('location', $location_id);//added to keep track of location
 		$this->db->where('check_out_by', 'System'); //added to keep track if its check_in or out, if checkin its system, if checkout its manual.
-		$this->db->where('created_at >=', $date . " 00:00:00");
-		$this->db->where('created_at <=', $date . " 23:59:59");
+
+		//$this->db->where('created_at >=', $date . " 00:00:00");
+		//$this->db->where('created_at <=', $date . " 23:59:59");
+
+		$this->db->where('created_at >=', $date . " " . $end);
+		$this->db->where('created_at <=', $date . " " . $end);
+
+
+
+
+
 		$this->db->limit(1);
 
 		$query = $this->db->get();
 
+		$last_query = $this->db->last_query();
+		print_r($last_query);
 
 		if($query->num_rows() > 0)
 		{
