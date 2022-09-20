@@ -52,13 +52,15 @@ CREATE TABLE `scans` (
 						 `id` int(11) NOT NULL AUTO_INCREMENT,
 						 `emp_number` varchar(255) NOT NULL,
 						 `location` int(11) NOT NULL,
-						 `type` int(11) NOT NULL,
+						 `type` varchar(255) NOT NULL,
 						 `check_in` datetime NOT NULL,
 						 `check_out` datetime NOT NULL,
 						 `hours_worked` float NOT NULL,
+						 `schedule` varchar(255) NOT NULL,
+						 `check_out_by` varchar(255) NOT NULL,
 						 `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 						 PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +69,7 @@ CREATE TABLE `scans` (
 
 LOCK TABLES `scans` WRITE;
 /*!40000 ALTER TABLE `scans` DISABLE KEYS */;
-INSERT INTO `scans` VALUES (7,'143044',2,2,'2022-09-02 15:48:09','2022-09-02 15:49:55',0.0294444,'2022-09-02 22:49:55'),(8,'143044',2,1,'2022-09-02 15:49:55','2022-09-02 23:30:00',7.66806,'2022-09-02 22:49:55');
+INSERT INTO `scans` VALUES (87,'43044',2,'rotating','2022-09-20 13:56:13','2022-09-20 13:57:20',0.0186111,'rot1','Manual','2022-09-20 20:57:20'),(88,'111',2,'rotating','2022-09-20 14:00:43','2022-09-20 14:01:50',0.0186111,'rot1','Manual','2022-09-20 21:01:50'),(89,'111',1,'rotating','2022-09-20 14:01:50','2022-09-20 18:00:00',3.96944,'rot1','System','2022-09-20 21:01:50'),(90,'222',2,'regular','2022-09-20 14:31:42','2022-09-20 14:33:13',0.0252778,'reg1','Manual','2022-09-20 21:33:13'),(91,'222',1,'regular','2022-09-20 14:33:41','2022-09-20 14:34:19',0.0105556,'reg1','Manual','2022-09-20 21:34:19'),(92,'222',2,'regular','2022-09-20 14:34:19','2022-09-20 15:36:00',1.02806,'reg1','System','2022-09-20 21:34:19');
 /*!40000 ALTER TABLE `scans` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,5 +106,3 @@ UNLOCK TABLES;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
