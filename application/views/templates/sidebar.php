@@ -32,10 +32,16 @@
 			<span class="icon la la-file-alt"></span>
 			<span class="title">Reportes</span>
 		</a>
+		<a href="<?php echo base_url() ?>records/edit" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
+		   data-tippy-content="Pages">
+			<span class="icon la la-edit"></span>
+			<span class="title">Editar Registros</span>
+		</a>
 		<a href="#no-link" class="link" data-target="[data-menu=ui]" data-toggle="tooltip-menu" data-tippy-content="UI">
 			<span class="icon la la-cube"></span>
 			<span class="title">Configuración</span>
 		</a>
+
 		<!--
 		<a href="#no-link" class="link" data-target="[data-menu=applications]" data-toggle="tooltip-menu"
 		   data-tippy-content="Applications">
