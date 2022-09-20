@@ -40,7 +40,15 @@ class ShiftModel extends CI_Model{
 					$shift = "reg3";
 					$start = "23:35:59";
 					$end = '05:59:59';
-					$day_end = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
+
+					if(
+						$date >= date('H:i:s', strtotime('23:36:00'))
+						&& $date <= date('H:i:s', strtotime('23:59:59'))
+					)
+					{
+						$day_end = date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day'));
+					}
+
 				}
 				break;
 
@@ -133,5 +141,5 @@ class ShiftModel extends CI_Model{
 
 	}
 
-
 }
+
