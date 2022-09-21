@@ -1,6 +1,6 @@
 <?php
 
-class Records extends CI_Controller{
+class Records extends MY_Controller{
 
 	public function index()
 	{
