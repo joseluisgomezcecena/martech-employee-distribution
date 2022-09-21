@@ -80,15 +80,18 @@ class KeyBoardModel extends CI_Model{
 		}
 		else
 		{
-			//checking if the employee has another checkin for the same date with check_out_by = 'System'
+			//checking if the employee has another checkin for the same date with check_out_by = 'System' and different location so it will not just checkout.
 			$this->db->order_by('id', 'DESC');
 			$this->db->select('*');
 			$this->db->from('scans');
 			$this->db->where('emp_number', $emp_number);
 			//$this->db->where('location', $location_id);//added to keep track of location
 			$this->db->where('check_out_by', 'System'); //added to keep track if its check_in or out, if checkin its system, if checkout its manual.
-			$this->db->where('created_at >=', $date . " 00:00:00");
-			$this->db->where('created_at <=', $date . " 23:59:59");
+			//$this->db->where('created_at >=', $date . " 00:00:00");
+			//$this->db->where('created_at <=', $date . " 23:59:59");
+			$this->db->where('created_at >=', $date . " " . $start);
+			$this->db->where('created_at <=', $date_end . " " . $end);
+
 			$this->db->limit(1);
 
 			$query = $this->db->get();
@@ -138,7 +141,8 @@ class KeyBoardModel extends CI_Model{
 			{
 				//checking in to the new location if there were no previous records. Works only for first time checkin. Or if employee checked out manually.
 				$t1 = strtotime($date_time);
-				$t2 = strtotime($date . ' '. $end);
+				//$t2 = strtotime($date . ' '. $end);
+				$t2 = strtotime($date_end . ' '. $end);
 				$diff = $t2 - $t1;
 				$hours = $diff / ( 60 * 60 );
 
@@ -146,7 +150,8 @@ class KeyBoardModel extends CI_Model{
 					'emp_number' => $this->input->post('work_id'),
 					'location' => $this->input->post('location_id'),
 					'check_in' => $date_time,
-					'check_out' => $date . ' '. $end,
+					//'check_out' => $date . ' '. $end,
+					'check_out' => $date_end . ' '. $end,
 					'type' => $type,
 					'hours_worked' => $hours,
 					'schedule' => $wshift,
