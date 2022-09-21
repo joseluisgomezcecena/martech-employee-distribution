@@ -19,6 +19,7 @@ class Records extends CI_Controller{
 	{
 		$data['title'] = "Editar Registro";
 		$data['scan'] = $this->RecordModel->get_record($id);
+		$data['locations'] = $this->PlanningGroupModel->get_locations();
 
 		if(empty($data['scan']))
 		{

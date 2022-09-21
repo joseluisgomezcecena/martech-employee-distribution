@@ -7,29 +7,79 @@
 	</ul>
 </section>
 
-
+<div class="alert alert_info mb-8">
+	<strong class="uppercase"><bdi>Aviso:</bdi></strong>
+	Una vez que se edite este registro esta acción no se podrá deshacer, debe ser muy cuidadoso en la información que captura.
+	<button type="button" class="dismiss la la-times" data-dismiss="alert"></button>
+</div>
 
 <div class="card p-4 flex flex-wrap gap-5">
-	<?php echo form_open(base_url() . 'records/index', array('class' => 'form-horizontal')); ?>
+	<?php echo form_open(base_url() . 'records/edit/'. $scan['id'], array('class' => 'form-horizontal')); ?>
 	<div class="grid grid-cols-5 gap-4">
+
 		<div style="margin: 15px;">
-			<label class="col-sm-12">Fecha de inicio</label>
+			<label class="col-sm-12">Numero de empleado</label>
 			<div class="col-sm-12">
-				<input type="date" class="form-control" id="datepicker" name="date_start" placeholder="Fecha de inicio" value="">
+				<input type="number" class="form-control" id="emp_number"
+					   name="emp_number" placeholder="Numero de empleado" value="<?php echo $scan['emp_number'] ?>" required>
 			</div>
 		</div>
 
 		<div style="margin: 15px;">
-			<label class="col-sm-12">Fecha de inicio</label>
+			<label class="col-sm-12">Planning Group</label>
 			<div class="col-sm-12">
-				<input type="date" class="form-control" id="datepicker" name="date_end" placeholder="Fecha de inicio" value="">
+				<select class="form-control" id="location" name="location"  required>
+					<option value="">Seleccione una opción</option>
+					<?php foreach ($locations as $location): ?>
+						<option value="<?php echo $location['location_id'] ?>" <?php if ($location['location_id'] == $scan['location']) echo 'selected'; ?>><?php echo $location['location_name'] ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+		</div>
+
+		<div style="margin: 15px;">
+			<label class="col-sm-12">Horario</label>
+			<div class="col-sm-12">
+				<select class="form-control" id="schedule" name="schedule" required>
+					<option value="">Seleccione una opción</option>
+					<option value="reg1">Regular Primer Turno</option>
+					<option value="reg2">Regular Segundo Turno</option>
+					<option value="reg3">Regular Tercer Turno</option>
+					<option value="rot1">4x3 06:00 - 18:00</option>
+					<option value="rot2">4x3 18:00 - 06:00</option>
+					<option value="w1">Fin de Semana 06:00 - 18:00</option>
+					<option value="w2">Fin de Semana 18:00 - 06:00</option>
+					<option value="extra">T.Extra</option>
+				</select>
+			</div>
+		</div>
+
+		<div style="margin: 15px;">
+			<label class="col-sm-12">Hora de entrada</label>
+			<div class="col-sm-12">
+				<input onchange="calculateDT()" type="datetime-local" class="form-control" id="check_in" name="check_in" placeholder="Hora de entrada" value="<?php echo $scan['check_in'] ?>">
+			</div>
+		</div>
+
+		<div style="margin: 15px;">
+			<label class="col-sm-12">Hora de salida</label>
+			<div class="col-sm-12">
+				<input onchange="calculateDT()" type="datetime-local" class="form-control" id="check_out" name="check_out" placeholder="Hora de salida" value="<?php echo $scan['check_out'] ?>">
+			</div>
+		</div>
+
+		<div style="margin: 15px;">
+			<label class="col-sm-12">Horas Trabajadas</label>
+			<div class="col-sm-12">
+				<input style="background-color: rgba(128,128,128,0.44)" type="number" class="form-control" id="hours_worked"
+					   name="hours_worked" placeholder="Horas Trabajadas" value="<?php echo $scan['hours_worked'] ?>" readonly>
 			</div>
 		</div>
 
 		<div style="margin: 15px;">
 			<div class="col-sm-12">
-				<label class="col-sm-12">Click para buscar</label>
-				<button class="btn_primary btn" type="submit" name="search"><i class="fa fa-search"></i> Buscar</button>
+				<label class="col-sm-12">Click para guardar</label>
+				<button class="btn_primary btn" type="submit" name="save"><i class="la la-save"></i> &nbsp; Guardar</button>
 			</div>
 		</div>
 
@@ -39,58 +89,6 @@
 </div>
 
 
-<div class="card p-4  gap-5 mt-5">
-
-	<div class="container-fluid">
-
-		<div class="row justify-content-center">
-
-			<div class="col-lg-12 mt-5">
-				<div class="white-box analytics-info">
-					<h3 class="box-title">Registros</h3>
-					<div class="">
-						<table style="width: 100%; font-size: 10px;" id="entries-list" class="table table_hoverable table_striped">
-							<thead>
-							<th>ID</th>
-							<th>Numero de empleado</th>
-							<th>Ubicación</th>
-							<th>Entrada</th>
-							<th>Salida</th>
-							<th>Horas trabajadas</th>
-							<th>Fecha de registro</th>
-							<th>Opciones</th>
-
-							</thead>
-							<tbody>
-							<?php foreach ($scans as $scan): ?>
-								<tr>
-									<td class="text-center justify-center items-center"><?php echo $scan['id']; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan['emp_number']; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["location_name"]; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["check_in"]; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["check_out"]; ?></td>
-									<td class="text-center justify-center items-center"><?php echo round($scan["hours_worked"],2) ; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["created_at"]; ?></td>
-									<td class="text-center justify-center items-center">
-										<a href="<?php echo base_url() ?>records/edit/<?php echo $scan['id']; ?>" class="btn_primary btn">Editar</a>
-										<a href="<?php echo base_url() ?>records/edit/<?php echo $scan['id']; ?>" class="btn btn_danger btn_outlined">Eliminar</a>
-									</td>
-								</tr>
-							<?php endforeach ?>
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-			</div>
-
-
-		</div>
-	</div>
-
-
-</div>
-
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 <script>
@@ -99,6 +97,25 @@
 		'bSort': false
 		//'scrollCollapse': true,
 	});
+
+	function calculateDT() {
+		//var oneD = 1000 * 60 * 60 * 24;
+
+		var oneD = 1000 * 60 * 60;
+		var startDT = ($("#check_in").val());
+		var endDT = ($("#check_out").val());
+		var sMS = new Date(startDT);
+		var eMS = new Date(endDT);
+
+		//var result = (eMS.getTime() - sMS.getTime()) / oneD;
+		var result = Math.round((eMS.getTime() - sMS.getTime()) / oneD *1000) / 1000;
+		//return Math.round((eMS.getTime() - sMS.getTime()) / oneD);
+		//alert(result);
+		$("#hours_worked").val(result);
+	}
+
+	//calculateDT();
+
 </script>
 
 
