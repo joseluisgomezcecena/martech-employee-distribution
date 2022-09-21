@@ -118,7 +118,8 @@ class KeyBoardModel extends CI_Model{
 
 				//after updating the record, we will insert a new record for the checkin.
 				$t1 = strtotime($date_time);
-				$t2 = strtotime($date . ' '. $end);
+				//$t2 = strtotime($date . ' '. $end);
+				$t2 = strtotime($date_end . ' '. $end);
 				$diff = $t2 - $t1;
 				$hours = $diff / ( 60 * 60 );
 
@@ -126,7 +127,8 @@ class KeyBoardModel extends CI_Model{
 					'emp_number' => $this->input->post('work_id'),
 					'location' => $this->input->post('location_id'),
 					'check_in' => $date_time,
-					'check_out' => $date . ' '. $end,
+					//'check_out' => $date . ' '. $end,
+					'check_out' => $date_end . ' '. $end,
 					'type' => $type,
 					'hours_worked' => $hours,
 					'schedule' => $wshift,
