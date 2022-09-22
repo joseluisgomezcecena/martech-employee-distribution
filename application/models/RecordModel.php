@@ -14,37 +14,40 @@ class RecordModel extends CI_Model{
 		return $query->row_array();
 	}
 
-	//reports
-	public function get_scans()
+	public function update_record()
 	{
-		if($this->input->post('date_start'))
+		$schedule = $this->input->post('schedule');
+
+		if($schedule == 'reg1' || $schedule == 'reg2'|| $schedule == 'reg3')
 		{
-			$start_date = $this->input->post('date_start');
-			$end_date = $this->input->post('date_end');
-			$this->db->where('created_at >=', $start_date . " 00:00:00");
-			$this->db->where('created_at <=', $end_date . " 23:59:59");
+			$type = 'regular';
+		}
+		elseif ($schedule == 'rot1' || $schedule == 'rot2')
+		{
+			$type = 'rotating';
+		}
+		elseif ($schedule == 'w1' || $schedule == 'w2')
+		{
+			$type = 'weekend';
 		}
 		else
 		{
-			$today = date('Y-m-d');
-			$this->db->where('created_at >=', $today . " 00:00:00");
-			$this->db->where('created_at <=', $today . " 23:59:59");
+			$type = 'extra';
 		}
 
+		$data = array(
+			'emp_number' => $this->input->post('emp_number'),
+			'location' => $this->input->post('location'),
+			'type' => $type,
+			'schedule' => $this->input->post('schedule'),
+			'check_in' => $this->input->post('check_in'),
+			'check_out' => $this->input->post('check_out'),
+			'check_out_by'=>'Manual',
+			'hours_worked'=>$this->input->post('hours_worked'),
+		);
 
-		$this->db->order_by('id', 'DESC');
-		$this->db->select('*');
-		$this->db->from('scans');
-		$this->db->join('locations', 'scans.location = locations.location_id', 'left');
-		$query = $this->db->get();
-
-		//$lastone = $this->db->last_query();
-		//print_r($lastone);
-
-		return $query->result_array();
+		$this->db->where('id', $this->input->post('id'));
+		return $this->db->update('scans', $data);
 	}
-
-
-
 
 }

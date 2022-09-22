@@ -26,7 +26,7 @@ class Records extends MY_Controller{
 			show_404();
 		}
 
-
+		$this->form_validation->set_rules('id', 'Registro a editar', 'required');
 		$this->form_validation->set_rules('emp_number', 'Numero de empleado', 'required');
 		$this->form_validation->set_rules('location', 'Ubicación', 'required');
 		$this->form_validation->set_rules('schedule', 'Horario', 'required');
@@ -44,7 +44,9 @@ class Records extends MY_Controller{
 		}
 		else
 		{
-
+			$this->RecordModel->update_record();
+			$this->session->set_flashdata('record_updated', 'Registro actualizado');
+			redirect(base_url() . 'records');
 		}
 
 	}

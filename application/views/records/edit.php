@@ -15,6 +15,9 @@
 
 <div class="card p-4 flex flex-wrap gap-5">
 	<?php echo form_open(base_url() . 'records/edit/'. $scan['id'], array('class' => 'form-horizontal')); ?>
+
+	<input type="hidden" name="id" value="<?php echo $scan['id']; ?>">
+
 	<div class="grid grid-cols-5 gap-4">
 
 		<div style="margin: 15px;">
