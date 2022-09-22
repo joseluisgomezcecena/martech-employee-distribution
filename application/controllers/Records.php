@@ -27,12 +27,26 @@ class Records extends MY_Controller{
 		}
 
 
+		$this->form_validation->set_rules('emp_number', 'Numero de empleado', 'required');
+		$this->form_validation->set_rules('location', 'Ubicación', 'required');
+		$this->form_validation->set_rules('schedule', 'Horario', 'required');
+		$this->form_validation->set_rules('check_in', 'Hora de entrada', 'required');
+		$this->form_validation->set_rules('check_out', 'Hora de salida', 'required');
 
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view('templates/workspace_start');
-		$this->load->view('records/edit', $data); //loading page and data
-		$this->load->view('templates/footer');
+
+		if($this->form_validation->run()===FALSE)
+		{
+			$this->load->view('templates/header');
+			$this->load->view('templates/sidebar');
+			$this->load->view('templates/workspace_start');
+			$this->load->view('records/edit', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+
+		}
+
 	}
 
 

@@ -9,6 +9,9 @@
 				<div class="ltr:ml-4 rtl:mr-4 ltr:text-left rtl:text-right">
 					<h5>Martech Medical West.</h5>
 					<p class="mt-2">Distribución de empleados</p>
+					<?php if(isset($this->session->userdata['logged_in'])): ?>
+						<p class="mt-2"><span class="dot"></span>&nbsp;Sesión: <b><?php echo $this->session->userdata['user_id']['user_name']; ?></b></p>
+					<?php endif; ?>
 				</div>
 			</a>
 			<hr class="mx-8 my-4">

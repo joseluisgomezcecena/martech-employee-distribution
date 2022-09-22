@@ -1,9 +1,66 @@
 
+<div class="container flex items-center justify-center mt-20 py-10">
+	<div class="w-full md:w-1/2 xl:w-1/3">
+		<div class="mx-5 md:mx-10">
+			<div class="alert alert_secondary">
+				<strong class="uppercase"><bdi>Aviso:</bdi></strong>
+				Esta sección esta protegida.
+				<button type="button" class="dismiss la la-times" data-dismiss="alert"></button>
+			</div>
+			<?php echo validation_errors(); ?>
 
+			<?php if($this->session->flashdata('login_success')): ?>
+
+				<div class="alert alert_success">
+					<strong class="uppercase"><bdi>Logged:</bdi></strong>
+					Logged in.
+					<button type="button" class="dismiss la la-times" data-dismiss="alert"></button>
+				</div>
+
+			<?php endif; ?>
+
+			<?php if($this->session->flashdata('login_failed')): ?>
+
+				<div class="alert alert_danger">
+					<strong class="uppercase"><bdi>No autorizado:</bdi></strong>
+					usuario y/o contraseña incorrectos.
+					<button type="button" class="dismiss la la-times" data-dismiss="alert"></button>
+				</div>
+
+			<?php endif; ?>
+
+		</div>
+
+		<div class="card mt-5 p-5 md:p-10" action="index.html">
+			<?php echo form_open(base_url() . 'users/login') ?>
+
+			<div class="mb-5">
+				<label class="label block mb-2" for="email">Usuario</label>
+				<input  type="text" class="form-control" id="username" name="username" placeholder="Usuario" >
+			</div>
+			<div class="mb-5">
+				<label class="label block mb-2" for="password">Password</label>
+				<label class="form-control-addon-within">
+					<input id="password" name="password" type="password" class="form-control border-none" value="12345">
+					<span class="flex items-center ltr:pr-4 rtl:pl-4">
+                            <button type="button"
+									class="btn btn-link text-gray-300 dark:text-gray-700 la la-eye text-xl leading-none"
+									data-toggle="password-visibility"></button>
+                        </span>
+				</label>
+			</div>
+			<div class="flex items-center">
+				<a href="#" class="text-sm uppercase">Olvide mi contraseña</a>
+				<button type="submit" class="btn btn_primary ltr:ml-auto rtl:mr-auto uppercase">Login</button>
+			</div>
+			<?php echo form_close() ?>
+		</div>
+	</div>
+</div>
+
+<!--
 <div class="container-fluid">
-	<!-- ============================================================== -->
-	<!-- Contenido -->
-	<!-- ============================================================== -->
+
 	<div class="justify-content-center">
 		<div class="col-lg-12">
 			<div class="gray-box analytics-info">
@@ -74,7 +131,7 @@
 		</div>
 	</div>
 </div>
-
+-->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

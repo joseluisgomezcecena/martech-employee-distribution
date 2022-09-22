@@ -33,6 +33,13 @@
 		.menu-bar.menu-wide .menu-items .menu-detail .menu-detail-wrapper{
 			overflow-y: overlay !important;
 		}
+		.dot {
+			height: 11px;
+			width: 11px;
+			background-color: #02be8b;
+			border-radius: 50%;
+			display: inline-block;
+		}
 	</style>
 </head>
 
@@ -68,7 +75,9 @@
 		<!-- Fullscreen -->
 		<button id="fullScreenToggler" type="button"
 				class="hidden lg:inline-block btn-link ltr:ml-3 rtl:mr-3 px-2 text-2xl leading-none la la-expand-arrows-alt"
-				data-toggle="tooltip" data-tippy-content="Fullscreen"></button>
+				data-toggle="tooltip" data-tippy-content="Fullscreen">
+
+		</button>
 
 		<!-- Apps -->
 		<div class="dropdown self-stretch">
@@ -101,6 +110,11 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
+
 
 		<!-- Notifications
 		<div class="dropdown self-stretch">
@@ -141,18 +155,23 @@
 				</div>
 			</div>
 		</div>
-
-
+		-->
+		<?php if(isset($this->session->userdata['logged_in'])): ?>
 		<div class="dropdown">
 			<button class="flex items-center ltr:ml-4 rtl:mr-4" data-toggle="custom-dropdown-menu"
 					data-tippy-arrow="true" data-tippy-placement="bottom-end">
-				<span class="avatar">JD</span>
+				<span class="avatar">
+					<?php if(isset($this->session->userdata['logged_in'])): ?>
+						<?php echo substr($this->session->userdata['user_id']['user_name'],0,1); ?>
+					<?php endif; ?>
+				</span>
 			</button>
 			<div class="custom-dropdown-menu w-64">
 				<div class="p-5">
-					<h5 class="uppercase">John Doe</h5>
-					<p>Editor</p>
+					<h5 class="uppercase"><?php echo $this->session->userdata['user_id']['user_name'] ?></h5>
+					<p>Administrador</p>
 				</div>
+				<!--
 				<hr>
 				<div class="p-5">
 					<a href="#" class="flex items-center text-normal hover:text-primary">
@@ -164,15 +183,17 @@
 						Change Password
 					</a>
 				</div>
+				-->
 				<hr>
 				<div class="p-5">
-					<a href="#" class="flex items-center text-normal hover:text-primary">
+					<a href="<?php echo base_url() ?>users/logout" class="flex items-center text-normal hover:text-primary">
 						<span class="la la-power-off text-2xl leading-none ltr:mr-2 rtl:ml-2"></span>
-						Logout
+						Cerrar Sesión.
 					</a>
 				</div>
 			</div>
 		</div>
-		User Menu -->
+		<?php endif; ?>
+		<!--User Menu -->
 	</div>
 </header>

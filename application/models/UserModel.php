@@ -72,16 +72,21 @@ class UserModel extends CI_Model{
 
 	public function login($username, $password)
 	{
-		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->join('departments', 'users.user_department_id = departments.department_id', 'left');
-		$this->db->where('user_name', $username);
-		$query = $this->db->get();
-		//$this->db->where('user_name', $username);
-		//$query = $this->db->get('users');
+		$authdb = $this->load->database('authdb', TRUE);
+
+
+		$authdb->select('*');
+		$authdb->from('users');
+		$authdb->where('user_email', $username);
+		$authdb->where('user_department_id', '1');
+		$query = $authdb->get();
+
+		$last_query = $authdb->last_query();
+		print_r($last_query);
+
 		$result = $query->row_array();
 
-		if (!empty($result) && password_verify($password, $result['password'])) {
+		if (!empty($result) && password_verify($password, $result['user_password'])) {
 			return $result;
 		} else {
 			return false;

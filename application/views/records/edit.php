@@ -42,14 +42,14 @@
 			<div class="col-sm-12">
 				<select class="form-control" id="schedule" name="schedule" required>
 					<option value="">Seleccione una opción</option>
-					<option value="reg1">Regular Primer Turno</option>
-					<option value="reg2">Regular Segundo Turno</option>
-					<option value="reg3">Regular Tercer Turno</option>
-					<option value="rot1">4x3 06:00 - 18:00</option>
-					<option value="rot2">4x3 18:00 - 06:00</option>
-					<option value="w1">Fin de Semana 06:00 - 18:00</option>
-					<option value="w2">Fin de Semana 18:00 - 06:00</option>
-					<option value="extra">T.Extra</option>
+					<option <?php if($scan['schedule'] == 'reg1'){echo "selected";}else{echo "";} ?> value="reg1">Regular Primer Turno</option>
+					<option <?php if($scan['schedule'] == 'reg2'){echo "selected";}else{echo "";} ?> value="reg2">Regular Segundo Turno</option>
+					<option <?php if($scan['schedule'] == 'reg3'){echo "selected";}else{echo "";} ?> value="reg3">Regular Tercer Turno</option>
+					<option <?php if($scan['schedule'] == 'rot1'){echo "selected";}else{echo "";} ?> value="rot1">4x3 06:00 - 18:00</option>
+					<option <?php if($scan['schedule'] == 'rot2'){echo "selected";}else{echo "";} ?> value="rot2">4x3 18:00 - 06:00</option>
+					<option <?php if($scan['schedule'] == 'w1'){echo "selected";}else{echo "";} ?> value="w1">Fin de Semana 06:00 - 18:00</option>
+					<option <?php if($scan['schedule'] == 'w2'){echo "selected";}else{echo "";} ?> value="w2">Fin de Semana 18:00 - 06:00</option>
+					<option <?php if($scan['schedule'] == 'extra'){echo "selected";}else{echo "";} ?> value="extra">T.Extra</option>
 				</select>
 			</div>
 		</div>
