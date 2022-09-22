@@ -35,6 +35,8 @@ class RecordModel extends CI_Model{
 			$type = 'extra';
 		}
 
+		$user_id = $this->session->userdata['user_id']['user_id'];
+
 		$data = array(
 			'emp_number' => $this->input->post('emp_number'),
 			'location' => $this->input->post('location'),
@@ -44,6 +46,8 @@ class RecordModel extends CI_Model{
 			'check_out' => $this->input->post('check_out'),
 			'check_out_by'=>'Manual',
 			'hours_worked'=>$this->input->post('hours_worked'),
+			'was_updated'=>1,
+			'updated_by'=>$user_id,
 		);
 
 		$this->db->where('id', $this->input->post('id'));

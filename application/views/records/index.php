@@ -7,6 +7,22 @@
 	</ul>
 </section>
 
+<?php if($this->session->flashdata('record_updated')): ?>
+<div class="alert alert_success">
+	<strong class="uppercase"><bdi>Registro Editado</bdi></strong>
+	El registro fue editado con exito.
+	<button type="button" class="dismiss la la-times" data-dismiss="alert"></button>
+</div>
+<?php endif; ?>
+
+
+<?php if($this->session->flashdata('record_deleted')): ?>
+	<div class="alert alert_success">
+		<strong class="uppercase"><bdi>Registro Borrado</bdi></strong>
+		El registro fue eliminado con exito.
+		<button type="button" class="dismiss la la-times" data-dismiss="alert"></button>
+	</div>
+<?php endif; ?>
 
 
 <div class="card p-4 flex flex-wrap gap-5">

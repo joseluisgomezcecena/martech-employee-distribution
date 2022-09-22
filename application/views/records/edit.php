@@ -34,7 +34,7 @@
 				<select class="form-control" id="location" name="location"  required>
 					<option value="">Seleccione una opción</option>
 					<?php foreach ($locations as $location): ?>
-						<option value="<?php echo $location['location_id'] ?>" <?php if ($location['location_id'] == $scan['location']) echo 'selected'; ?>><?php echo $location['location_name'] ?></option>
+						<option value="<?php echo $location['location_id'] ?>" <?php if ($location['location_id'] == $scan['location']) echo 'selected'; ?>><?php echo $location['planner_id']. " - " . $location['location_name'] ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
