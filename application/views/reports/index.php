@@ -41,80 +41,71 @@
 
 <div class="card p-4  gap-5 mt-5">
 
-	<div class="container-fluid">
-
-		<div class="row justify-content-center">
-
-			<div class="col-lg-12 mt-5">
-				<div class="white-box analytics-info">
-					<h3 class="box-title">Registros</h3>
-					<div class="">
-						<table style="width: 100%" id="entries-list" class="table table_hoverable table_striped">
-							<thead>
-							<th>ID</th>
-							<th>Numero de empleado</th>
-							<th>Ubicación</th>
-							<th>Entrada</th>
-							<th>Salida</th>
-							<th>Horas trabajadas</th>
-							<th>Fecha de registro</th>
-
-							</thead>
-							<tbody>
-							<?php foreach ($scans as $scan): ?>
-								<tr>
-									<td class="text-center justify-center items-center"><?php echo $scan['id']; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan['emp_number']; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["location_name"]; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["check_in"]; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["check_out"]; ?></td>
-									<td class="text-center justify-center items-center"><?php echo round($scan["hours_worked"],2) ; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $scan["created_at"]; ?></td>
-								</tr>
-							<?php endforeach ?>
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-			</div>
-
-
-
-
-
-
-
-			<div class="col-lg-12 mt-5">
-				<div class="white-box analytics-info">
-					<h3 class="box-title">Registros por ubicación</h3>
-					<div class="table-responsive">
-						<table style="width: 100%" id="entries-list" class="table">
-							<thead>
-							<th>Ubicación</th>
-							<th>Cantidad de empleados</th>
-							</thead>
-							<tbody>
-							<?php foreach ($employees as $employee): ?>
-								<tr>
-									<td class="text-center justify-center items-center"><?php echo $employee['location_name']; ?></td>
-									<td class="text-center justify-center items-center"><?php echo $employee['cuenta']; ?></td>
-								</tr>
-							<?php endforeach ?>
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-			</div>
-
-
-
+	<div class="flex flex-col gap-y-5">
+		<div class="p-5">
+			<h3>Registros</h3>
+			<table style="width: 100%; font-size: 12px;" id="entries-list" class="table table_striped w-full mt-3">
+				<thead>
+				<tr>
+					<th class="ltr:text-left rtl:text-right uppercase">ID</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Numero de empleado</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Ubicación</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Entrada</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Salida</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Horas Trabajadas</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Fecha de Registro</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php foreach ($scans as $scan): ?>
+					<tr>
+						<td  class=""><?php echo $scan['id']; ?></td>
+						<td  class=""><?php echo $scan['emp_number']; ?></td>
+						<td  class=""><?php echo $scan["location_name"]; ?></td>
+						<td  class=""><?php echo $scan["check_in"]; ?></td>
+						<td  class=""><?php echo $scan["check_out"]; ?></td>
+						<td  class=""><?php echo round($scan["hours_worked"],2) ; ?></td>
+						<td  class=""><?php echo $scan["created_at"]; ?></td>
+					</tr>
+				<?php endforeach ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
-
-
 </div>
+
+
+
+
+
+<div class="card p-4  gap-5 mt-5">
+
+	<div class="flex flex-col gap-y-5">
+		<div class="p-5">
+			<h3>Horas por empleado en planning group</h3>
+			<table style="width: 100%; font-size: 12px;" id="entries-list" class="table table_striped w-full mt-3">
+				<thead>
+				<tr>
+					<th class="ltr:text-left rtl:text-right uppercase">Numero de empleado</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Horas Trabajadas</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Planning Group con mas horas</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php foreach ($hours as $hour): ?>
+					<tr>
+						<td  class=""><?php echo $hour['emp_number']; ?></td>
+						<td  class=""><?php echo round($hour["mejor"],3) ; ?></td>
+						<td  class=""><?php echo $hour["planner_id"]; ?></td>
+					</tr>
+				<?php endforeach ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>

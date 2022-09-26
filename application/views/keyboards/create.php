@@ -42,7 +42,15 @@
 
 				<div class="mb-5 xl:w-1/2">
 					<label class="label block mb-2" for="title">Numero de Empleado</label>
+					<!--
 					<input id="work_id" name="work_id" type="text" class="form-control">
+					-->
+					<input list="employees" name="work_id" id="work_id" class="form-control">
+					<datalist id="employees">
+						<?php foreach($employees as $employee): ?>
+							<option value="<?php echo $employee['id'] ?>"><?php echo $employee['name'] ?></option>
+						<?php endforeach; ?>
+					</datalist>
 				</div>
 
 				<div style="opacity: 0" class="mb-5 xl:w-1/2">

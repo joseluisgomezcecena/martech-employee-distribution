@@ -8,8 +8,6 @@ class ReportModel extends CI_Model{
 	}
 
 
-
-
 	//reports
 	public function get_scans()
 	{
@@ -39,6 +37,24 @@ class ReportModel extends CI_Model{
 
 		return $query->result_array();
 	}
+
+
+
+	//reports get planning group hours by employee and location
+	public function get_hours_employee_location()
+	{
+		$query = $this->db->query("SELECT emp_number, MAX(best) as mejor, planner_id FROM (SELECT emp_number, SUM(hours_worked) as best,planner_id FROM scans LEFT JOIN locations ON locations.location_id = scans.location WHERE created_at BETWEEN '2022-09-01' AND '2022-09-24' GROUP BY emp_number, location) as bests GROUP BY emp_number");
+		//$query = $this->db->get();
+		//$lastone = $this->db->last_query();
+		//print_r($lastone);
+
+		return $query->result_array();
+		//print_r($query->result_array());
+	}
+
+
+
+
 
 
 
@@ -76,6 +92,12 @@ class ReportModel extends CI_Model{
 	}
 
 
+
+	public function get_employees()
+	{
+		$query = $this->db->get('empleados');
+		return $query->result_array();
+	}
 
 
 
@@ -155,6 +177,7 @@ class ReportModel extends CI_Model{
 		}
 
 	}
+
 
 
 
