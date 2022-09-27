@@ -86,7 +86,7 @@ class ShiftModel extends CI_Model{
 			case 'overtime':
 				$shift = "ot1";
 				$start = '00:00:00';
-				$end = '00:00:00';
+				$end = '23:59:59';
 				break;
 
 
