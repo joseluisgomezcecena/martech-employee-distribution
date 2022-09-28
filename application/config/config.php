@@ -26,8 +26,8 @@ date_default_timezone_set('America/Tijuana');
 |
 */
 	//$config['base_url'] = 'http://localhost/personnel_scanner';
-	//$config['base_url'] = 'http://mxmtsvrandon1/scanner';
-	$config['base_url'] = 'http://mxmtsvrandon1/scanner_test';
+	$config['base_url'] = 'http://mxmtsvrandon1/scanner';
+	//$config['base_url'] = 'http://mxmtsvrandon1/scanner_test';
 /*
 |--------------------------------------------------------------------------
 | Index File
