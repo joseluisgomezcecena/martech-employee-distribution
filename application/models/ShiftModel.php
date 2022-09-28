@@ -27,22 +27,30 @@ class ShiftModel extends CI_Model{
 				}
 				elseif
 				(
+					/*
 					$date > date('H:i:s', strtotime('15:36:00'))
 					&& $date <= date('H:i:s', strtotime('23:35:59'))
+					*/
+					$date > date('H:i:s', strtotime('15:36:00'))
+					&& $date <= date('H:i:s', strtotime('23:53:59'))
 				)
 				{
 					$shift = "reg2";
 					$start = "15:36:00";
-					$end = '23:35:59';
+					$end = '23:53:59';
 				}
 				else
 				{
 					$shift = "reg3";
-					$start = "23:35:59";
+					$start = "23:00:00";
 					$end = '05:59:59';
 
 					if(
+						/*
 						$date >= date('H:i:s', strtotime('23:36:00'))
+						&& $date <= date('H:i:s', strtotime('23:59:59'))
+						*/
+						$date >= date('H:i:s', strtotime('23:00:00'))
 						&& $date <= date('H:i:s', strtotime('23:59:59'))
 					)
 					{
