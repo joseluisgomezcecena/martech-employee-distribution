@@ -54,4 +54,18 @@ class RecordModel extends CI_Model{
 		return $this->db->update('scans', $data);
 	}
 
+
+
+
+	public function delete_record()
+	{
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->delete('scans');
+		return true;
+
+	}
+
+
+
+
 }

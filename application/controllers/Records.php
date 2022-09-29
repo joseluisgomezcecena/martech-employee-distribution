@@ -53,5 +53,38 @@ class Records extends MY_Controller{
 
 
 
+	public function delete($id = NULL)
+	{
+		$data['title'] = "Eliminar o Borrar Registro";
+		$data['scan'] = $this->RecordModel->get_record($id);
+		$data['locations'] = $this->PlanningGroupModel->get_locations();
+
+		if(empty($data['scan']))
+		{
+			show_404();
+		}
+
+		$this->form_validation->set_rules('id', 'Registro a editar', 'required');
+
+		if($this->form_validation->run()===FALSE)
+		{
+			$this->load->view('templates/header');
+			$this->load->view('templates/sidebar');
+			$this->load->view('templates/workspace_start');
+			$this->load->view('records/delete', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			$this->RecordModel->delete_record();
+			$this->session->set_flashdata('record_deleted', 'Registro borrado o eliminado.');
+			redirect(base_url() . 'records');
+		}
+
+	}
+
+
+
+
 
 }
