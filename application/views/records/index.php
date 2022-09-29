@@ -89,7 +89,7 @@
 									<td class="text-center justify-center items-center"><?php echo $scan["created_at"]; ?></td>
 									<td class="text-center justify-center items-center">
 										<a href="<?php echo base_url() ?>records/edit/<?php echo $scan['id']; ?>" class="btn_primary btn">Editar</a>
-										<a href="<?php echo base_url() ?>records/edit/<?php echo $scan['id']; ?>" class="btn btn_danger btn_outlined">Eliminar</a>
+										<a href="<?php echo base_url() ?>records/delete/<?php echo $scan['id']; ?>" class="btn btn_danger btn_outlined">Eliminar</a>
 									</td>
 								</tr>
 							<?php endforeach ?>
