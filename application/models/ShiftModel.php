@@ -153,6 +153,9 @@ class ShiftModel extends CI_Model{
 
 	public  function  get_shift_excel()
 	{
+		$day = date("Y-m-d");//default day is today.
+		$day_end = date("Y-m-d");//default end day is today.
+
 		$empleado = $this->input->post('work_id');
 
 		$this->db->select('*');
@@ -274,7 +277,7 @@ class ShiftModel extends CI_Model{
 
 		return array(
 			'shift' => $shift,//'reg1',reg2,reg3,rot1,rot2,ot1,w1,w2,w3
-			'type' => $turno, //regular, rotating, overtime, weekend
+			'type' => $turno, // MATU LV 6:00 a 15:36 BREAK 36 MIN , VESP LV 15:30-23:54 break 36 m, Turno Nocturno 21:36 pm-6:00 am, 3er Turno 23:00 a 06:00, Turno Rotativo A, Turno Rotativo B, Turno Rotativo C, Turno Rotativo D, Turno Fin de Semana Matutino, Turno FDS Lac 6:00-17:00
 			'start' => $start, //start of shift time
 			'end' => $end, //end of shift time
 			'day' => $day, //day of shift
