@@ -35,11 +35,13 @@ class Keyboards extends CI_Controller {
 		}
 		else
 		{
-			$this->KeyBoardModel->create($shift);
+			$shift_excel = $data['shift_excel'] = $this->ShiftModel->get_shift_excel();
+
+			$this->KeyBoardModel->create($shift, $shift_excel);
 
 			//session message
 			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id'));
-			redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
+			//redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
 		}
 
 	}

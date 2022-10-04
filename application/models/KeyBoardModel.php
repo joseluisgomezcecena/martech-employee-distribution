@@ -8,93 +8,61 @@ class KeyBoardModel extends CI_Model{
 	}
 
 
-	public function create($shift)
+	public function create($shift, $shift_excel)
 	{
 		$emp_number  = $this->input->post('work_id');
 		$location_id = $this->input->post('location_id');
 
-		//$date_time = $this->input->post('date');
 
 		$date_time = date('Y-m-d H:i:s');
 		//$date_time = date('2022-09-15 23:59:25'); //test
 
-		//$date = date('Y-m-d', strtotime($date_time));
-		//$date_third = date('Y-m-d', strtotime($date_time . ' -1 day'));
-
-		$wshift =  $shift['shift'];
-		$type   =  $shift['type'];
-		$end    =  $shift['end'];
-		$start  =  $shift['start'];
-		$day	=  $shift['day'];
-		$day_end = $shift['day_end'];
-		$hours  =  $shift['hours'];
-
-		$date = date('Y-m-d', strtotime($day));
-		$date_end = date('Y-m-d', strtotime($day_end));
 
 
-
-
-		$this->db->order_by('id', 'DESC');
-		$this->db->select('*');
-		$this->db->from('scans');
-		$this->db->where('emp_number', $emp_number);
-		$this->db->where('location', $location_id);//added to keep track of location
-		$this->db->where('check_out_by', 'System'); //added to keep track if its check_in or out, if checkin its system, if checkout its manual.
-
-		//$this->db->where('created_at >=', $date . " 00:00:00");
-		//$this->db->where('created_at <=', $date . " 23:59:59");
-
-		$this->db->where('created_at >=', $date . " " . $start);
-		$this->db->where('created_at <=', $date_end . " " . $end);
-
-
-
-
-
-		$this->db->limit(1);
-
-		$query = $this->db->get();
-
-		$last_query = $this->db->last_query();
-		print_r($last_query);
-
-		if($query->num_rows() > 0)
+		if($shift_excel != 'N/A')
 		{
-			$data_result =  $query->row_array();
-			$id = $data_result['id'];
-			$check_in = $data_result['check_in'];
+			# code...
+			# if user is found in the Excel file.
 
-			$t1 = strtotime($check_in);
-			$t2 = strtotime($date_time);
-			$diff = $t2 - $t1;
-			$hours = $diff / ( 60 * 60 );
-
-			//updating the record for checkout before checking in.
-			$data_update = array(
-				'check_out' => $date_time,
-				'hours_worked' => $hours,
-				'check_out_by'=> 'Manual',
-			);
-			$this->db->update('scans', $data_update, array('id' => $id));
 		}
 		else
 		{
-			//checking if the employee has another checkin for the same date with check_out_by = 'System' and different location so it will not just checkout.
+			# code...
+			# only if employee is not in the Excel file.
+
+			$wshift =  $shift['shift'];
+			$type   =  $shift['type'];
+			$end    =  $shift['end'];
+			$start  =  $shift['start'];
+			$day	=  $shift['day'];
+			$day_end = $shift['day_end'];
+			$hours  =  $shift['hours'];
+
+			$date = date('Y-m-d', strtotime($day));
+			$date_end = date('Y-m-d', strtotime($day_end));
+
+
+
+
 			$this->db->order_by('id', 'DESC');
 			$this->db->select('*');
 			$this->db->from('scans');
 			$this->db->where('emp_number', $emp_number);
-			//$this->db->where('location', $location_id);//added to keep track of location
+			$this->db->where('location', $location_id);//added to keep track of location
 			$this->db->where('check_out_by', 'System'); //added to keep track if its check_in or out, if checkin its system, if checkout its manual.
-			//$this->db->where('created_at >=', $date . " 00:00:00");
-			//$this->db->where('created_at <=', $date . " 23:59:59");
 			$this->db->where('created_at >=', $date . " " . $start);
 			$this->db->where('created_at <=', $date_end . " " . $end);
+
+
+
+
 
 			$this->db->limit(1);
 
 			$query = $this->db->get();
+
+			$last_query = $this->db->last_query();
+			print_r($last_query);
 
 			if($query->num_rows() > 0)
 			{
@@ -114,55 +82,91 @@ class KeyBoardModel extends CI_Model{
 					'check_out_by'=> 'Manual',
 				);
 				$this->db->update('scans', $data_update, array('id' => $id));
-
-
-				//after updating the record, we will insert a new record for the checkin.
-				$t1 = strtotime($date_time);
-				//$t2 = strtotime($date . ' '. $end);
-				$t2 = strtotime($date_end . ' '. $end);
-				$diff = $t2 - $t1;
-				$hours = $diff / ( 60 * 60 );
-
-				$data = array(
-					'emp_number' => $this->input->post('work_id'),
-					'location' => $this->input->post('location_id'),
-					'check_in' => $date_time,
-					//'check_out' => $date . ' '. $end,
-					'check_out' => $date_end . ' '. $end,
-					'type' => $type,
-					'hours_worked' => $hours,
-					'schedule' => $wshift,
-					'check_out_by'=> 'System',//changed form system to manual. ???
-				);
-
-				$this->db->insert('scans', $data);
-
-
 			}
 			else
 			{
-				//checking in to the new location if there were no previous records. Works only for first time checkin. Or if employee checked out manually.
-				$t1 = strtotime($date_time);
-				//$t2 = strtotime($date . ' '. $end);
-				$t2 = strtotime($date_end . ' '. $end);
-				$diff = $t2 - $t1;
-				$hours = $diff / ( 60 * 60 );
+				//checking if the employee has another checkin for the same date with check_out_by = 'System' and different location so it will not just checkout.
+				$this->db->order_by('id', 'DESC');
+				$this->db->select('*');
+				$this->db->from('scans');
+				$this->db->where('emp_number', $emp_number);
+				//$this->db->where('location', $location_id);//added to keep track of location
+				$this->db->where('check_out_by', 'System'); //added to keep track if its check_in or out, if checkin its system, if checkout its manual.
+				$this->db->where('created_at >=', $date . " " . $start);
+				$this->db->where('created_at <=', $date_end . " " . $end);
 
-				$data = array(
-					'emp_number' => $this->input->post('work_id'),
-					'location' => $this->input->post('location_id'),
-					'check_in' => $date_time,
-					//'check_out' => $date . ' '. $end,
-					'check_out' => $date_end . ' '. $end,
-					'type' => $type,
-					'hours_worked' => $hours,
-					'schedule' => $wshift,
-					'check_out_by'=> 'System',
-				);
+				$this->db->limit(1);
 
-				$this->db->insert('scans', $data);
+				$query = $this->db->get();
+
+				if($query->num_rows() > 0)
+				{
+					$data_result =  $query->row_array();
+					$id = $data_result['id'];
+					$check_in = $data_result['check_in'];
+
+					$t1 = strtotime($check_in);
+					$t2 = strtotime($date_time);
+					$diff = $t2 - $t1;
+					$hours = $diff / ( 60 * 60 );
+
+					//updating the record for checkout before checking in.
+					$data_update = array(
+						'check_out' => $date_time,
+						'hours_worked' => $hours,
+						'check_out_by'=> 'Manual',
+					);
+					$this->db->update('scans', $data_update, array('id' => $id));
+
+
+					//after updating the record, we will insert a new record for the checkin.
+					$t1 = strtotime($date_time);
+					$t2 = strtotime($date_end . ' '. $end);
+					$diff = $t2 - $t1;
+					$hours = $diff / ( 60 * 60 );
+
+					$data = array(
+						'emp_number' => $this->input->post('work_id'),
+						'location' => $this->input->post('location_id'),
+						'check_in' => $date_time,
+						'check_out' => $date_end . ' '. $end,
+						'type' => $type,
+						'hours_worked' => $hours,
+						'schedule' => $wshift,
+						'check_out_by'=> 'System',//changed form system to manual. ???
+					);
+
+					$this->db->insert('scans', $data);
+
+
+				}
+				else
+				{
+					//checking in to the new location if there were no previous records. Works only for first time checkin. Or if employee checked out manually.
+					$t1 = strtotime($date_time);
+					//$t2 = strtotime($date . ' '. $end);
+					$t2 = strtotime($date_end . ' '. $end);
+					$diff = $t2 - $t1;
+					$hours = $diff / ( 60 * 60 );
+
+					$data = array(
+						'emp_number' => $this->input->post('work_id'),
+						'location' => $this->input->post('location_id'),
+						'check_in' => $date_time,
+						'check_out' => $date_end . ' '. $end,
+						'type' => $type,
+						'hours_worked' => $hours,
+						'schedule' => $wshift,
+						'check_out_by'=> 'System',
+					);
+
+					$this->db->insert('scans', $data);
+				}
 			}
+
 		}
+
+
 
 		return true;
 	}

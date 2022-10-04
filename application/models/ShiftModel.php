@@ -137,6 +137,7 @@ class ShiftModel extends CI_Model{
 
 		}
 
+
 		return array(
 			'shift' => $shift,//'reg1',reg2,reg3,rot1,rot2,ot1,w1,w2,w3
 			'type' => $type, //regular, rotating, overtime, weekend
@@ -146,6 +147,141 @@ class ShiftModel extends CI_Model{
 			'day_end'=> $day_end, //day of shift end
 			'hours'=> $date //in H:i:s format
 		);
+
+	}
+
+
+	public  function  get_shift_excel()
+	{
+		$empleado = $this->input->post('work_id');
+
+		$this->db->select('*');
+		$this->db->from('empleados_report');
+		$this->db->where('id', $empleado);
+
+
+		$query = $this->db->get();
+
+		$last_query = $this->db->last_query();
+		//echo $last_query;
+		print_r($last_query);
+
+		$row =  $query->row_array();
+
+		switch ($row['turno'])
+		{
+			case 'MATU LV 6:00 a 15:36 BREAK 36 MIN':
+				$turno = 'MATU LV 6:00 a 15:36 BREAK 36 MIN';
+
+				$shift = "reg1";
+				$start = "06:00:00";
+				$end = '15:36:00';
+
+				break;
+
+			case 'VESP LV 15:30-23:54 break 36 m':
+				$turno = 'VESP LV 15:30-23:54 break 36 m';
+
+				$shift = "reg2";
+				$start = "15:30:00";
+				$end = '23:54:00';
+
+				break;
+
+			case 'Turno Nocturno 21:36 pm-6:00 am':
+				$turno = 'Turno Nocturno 21:36 pm-6:00 am';
+
+				$shift = "reg3";
+				$start = "21:36:00";
+				$end = '06:00:00';
+
+				break;
+
+			case '3er Turno 23:00 a 06:00':
+				$turno = '3er Turno 23:00 a 06:00';
+
+				$shift = "reg3";
+				$start = "23:00:00";
+				$end = '06:00:00';
+
+				break;
+
+			case 'Turno Rotativo A': //6AM-6PM
+				$turno = 'Turno Rotativo A';
+
+				$shift = "rot1";
+				$start = "06:00:00";
+				$end = '06:00:00';
+
+				break;
+
+			case 'Turno Rotativo B': //6PM-6AM
+				$turno = 'Turno Rotativo B';
+
+				$shift = "rot2";
+				$start = "06:00:00";
+				$end = '06:00:00';
+
+				break;
+
+			case 'Turno Rotativo C': //6AM-6PM
+				$turno = 'Turno Rotativo C';
+
+				$shift = "rot1";
+				$start = "06:00:00";
+				$end = '06:00:00';
+
+				break;
+
+			case 'Turno Rotativo D'://6PM-6AM
+				$turno = 'Turno Rotativo D';
+
+				$shift = "rot2";
+				$start = "06:00:00";
+				$end = '06:00:00';
+
+				break;
+
+			case 'Turno Fin de Semana Matutino':
+				$turno = 'Turno Fin de Semana Matutino';
+
+				$shift = "w1";
+				$start = "06:00:00";
+				$end = '06:00:00';
+
+				break;
+
+			case 'Turno FDS Lac 6:00-17:00':
+				$turno = 'Turno FDS Lac 6:00-17:00';
+
+				$shift = "w2";
+				$start = "06:00:00";
+				$end = '17:00:00';
+
+				break;
+
+
+				default:
+				$turno = 'N/A';
+				$shift = 'N/A';
+				$start = '00:00:00';
+				$end = '00:00:00';
+				break;
+
+
+		}
+
+
+		return array(
+			'shift' => $shift,//'reg1',reg2,reg3,rot1,rot2,ot1,w1,w2,w3
+			'type' => $turno, //regular, rotating, overtime, weekend
+			'start' => $start, //start of shift time
+			'end' => $end, //end of shift time
+			'day' => $day, //day of shift
+			'day_end'=> $day_end, //day of shift end
+			'hours'=> $date //in H:i:s format
+		);
+
 
 	}
 
