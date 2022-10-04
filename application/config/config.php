@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 date_default_timezone_set('America/Tijuana');
 
@@ -25,9 +25,9 @@ date_default_timezone_set('America/Tijuana');
 | a PHP script and you can easily do that on your own.
 |
 */
-	//$config['base_url'] = 'http://localhost/personnel_scanner';
-	$config['base_url'] = 'http://mxmtsvrandon1/scanner';
-	//$config['base_url'] = 'http://mxmtsvrandon1/scanner_test';
+//$config['base_url'] = 'http://localhost/personnel_scanner';
+$config['base_url'] = 'http://localhost/scanner';
+//$config['base_url'] = 'http://mxmtsvrandon1/scanner_test';
 /*
 |--------------------------------------------------------------------------
 | Index File

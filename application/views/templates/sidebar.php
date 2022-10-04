@@ -9,7 +9,7 @@
 				<div class="ltr:ml-4 rtl:mr-4 ltr:text-left rtl:text-right">
 					<h5>Martech Medical West.</h5>
 					<p class="mt-2">Distribución de empleados</p>
-					<?php if(isset($this->session->userdata['logged_in'])): ?>
+					<?php if (isset($this->session->userdata['logged_in'])) : ?>
 						<p class="mt-2"><span class="dot"></span>&nbsp;Sesión: <b><?php echo $this->session->userdata['user_id']['user_name']; ?></b></p>
 					<?php endif; ?>
 				</div>
@@ -20,23 +20,19 @@
 			<span class="icon la la-laptop"></span>
 			<span class="title">Inicio</span>
 		</a>
-		<a href="<?php echo base_url() ?>scans/location" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
-		   data-tippy-content="Pages">
+		<a href="<?php echo base_url() ?>scans/location" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu" data-tippy-content="Pages">
 			<span class="icon la la-id-card"></span>
 			<span class="title">Escanear Gafetes</span>
 		</a>
-		<a href="<?php echo base_url() ?>keyboards/type" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
-		   data-tippy-content="Pages">
+		<a href="<?php echo base_url() ?>keyboards/type" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu" data-tippy-content="Pages">
 			<span class="icon la la-keyboard"></span>
 			<span class="title">Captura Manual</span>
 		</a>
-		<a href="<?php echo base_url() ?>reports" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
-		   data-tippy-content="Pages">
+		<a href="<?php echo base_url() ?>reports" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu" data-tippy-content="Pages">
 			<span class="icon la la-file-alt"></span>
 			<span class="title">Reportes</span>
 		</a>
-		<a href="<?php echo base_url() ?>records" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu"
-		   data-tippy-content="Pages">
+		<a href="<?php echo base_url() ?>records" class="link" data-target="[data-menu=pages]" data-toggle="tooltip-menu" data-tippy-content="Pages">
 			<span class="icon la la-edit"></span>
 			<span class="title">Editar Registros</span>
 		</a>
@@ -99,6 +95,12 @@
 			<a href="form-input-groups.html">
 				<span class="la la-sort-numeric-asc"></span>
 				Alta de Planning Number
+			</a>
+
+
+			<a href="<?= base_url('reports/tempus') ?>">
+				<span class="la la-sort-numeric-asc"></span>
+				Reporte de tempus
 			</a>
 
 		</div>

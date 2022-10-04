@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -26,6 +26,15 @@ $route['keyboards/location/(:any)'] = 'keyboards/location/$1';
 //reports.
 $route['reports'] = 'reports/index';
 
+
+//View tempus
+$route['reports/tempus'] = 'reports/tempus';
+$route['reports/tempus/import']['post'] = 'reports/tempus_import';
+
+
+
+
+
 //records.
 //this is for editing records.
 $route['records'] = 'records/index';
@@ -39,6 +48,7 @@ $route['users/profile'] = 'users/profile';
 $route['users/logout'] = 'users/logout';
 $route['users/index'] = 'useraccounts/index';
 $route['users/(:any)'] = 'useraccounts/view/$1';
+
 
 
 //pages
