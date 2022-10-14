@@ -32,8 +32,8 @@ class ReportModel extends CI_Model{
 		$this->db->join('locations', 'scans.location = locations.location_id', 'left');
 		$query = $this->db->get();
 
-		$lastone = $this->db->last_query();
-		print_r($lastone);
+		//$lastone = $this->db->last_query();
+		#print_r($lastone);
 
 		return $query->result_array();
 	}

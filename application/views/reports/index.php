@@ -28,8 +28,10 @@
 
 		<div style="margin: 15px;">
 			<div class="col-sm-12">
+				<!--
 				<label class="col-sm-12">Click para buscar</label>
-				<button class="btn_primary btn" type="submit" name="search"><i class="fa fa-search"></i> Buscar</button>
+				-->
+				<button class="btn_primary btn mt-5" type="submit" name="search"><i class="la la-search"></i> &nbsp; Buscar</button>
 			</div>
 		</div>
 
@@ -43,7 +45,7 @@
 
 	<div class="flex flex-col gap-y-5">
 		<div class="p-5">
-			<h3>Registros</h3>
+			<h3 class="mb-4">Registro de checadas</h3>
 			<table style="width: 100%; font-size: 12px;" id="entries-list" class="table table_striped w-full mt-3">
 				<thead>
 				<tr>
