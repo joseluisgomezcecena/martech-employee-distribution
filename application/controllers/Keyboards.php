@@ -35,13 +35,22 @@ class Keyboards extends CI_Controller {
 		}
 		else
 		{
-			$shift_excel = $data['shift_excel'] = $this->ShiftModel->get_shift_excel();
+			$shift_excel = $data['shift_excel'] = $this->ShiftModel->get_shift_excel(date('H:i:s'));
 
-			$this->KeyBoardModel->create($shift, $shift_excel);
+			$found = $this->KeyBoardModel->create($shift, $shift_excel);
+			if($found == "notfound")
+			{
+				$notes = "<br><span style='color:#f13c3c; font-weight: bolder'>NO SE ENCONTRO EN TEMPUS, VERIFIQUE EL NUMERO DE EMPLEADO Y RECUERDE CHECAR ENTRADAS Y SALIDAS DE PLANNING GROUP</span>.";
+			}else{
+				$notes = "";
+			}
 
 			//session message
-			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id'));
-			//redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
+			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id') . $notes);
+
+
+
+			redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
 		}
 
 	}

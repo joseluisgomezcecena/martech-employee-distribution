@@ -11,7 +11,7 @@
 
 <?php if($this->session->flashdata('creado')): ?>
 
-	<div class="alert alert_success mb-5">
+	<div class="alert alert_primary mb-5">
 		<strong class="uppercase"><bdi>Registrado Exitosamente!</bdi></strong>
 		Se ha registrado la asistencia.
 
@@ -21,6 +21,8 @@
 	</div>
 
 <?php endif; ?>
+
+
 
 
 

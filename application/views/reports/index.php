@@ -50,6 +50,7 @@
 					<th class="ltr:text-left rtl:text-right uppercase">ID</th>
 					<th class="ltr:text-left rtl:text-right uppercase">Numero de empleado</th>
 					<th class="ltr:text-left rtl:text-right uppercase">Ubicación</th>
+					<th class="ltr:text-left rtl:text-right uppercase">Planning Group</th>
 					<th class="ltr:text-left rtl:text-right uppercase">Entrada</th>
 					<th class="ltr:text-left rtl:text-right uppercase">Salida</th>
 					<th class="ltr:text-left rtl:text-right uppercase">Horas Trabajadas</th>
@@ -62,6 +63,7 @@
 						<td  class=""><?php echo $scan['id']; ?></td>
 						<td  class=""><?php echo $scan['emp_number']; ?></td>
 						<td  class=""><?php echo $scan["location_name"]; ?></td>
+						<td  class=""><?php echo $scan["planner_id"]; ?></td>
 						<td  class=""><?php echo $scan["check_in"]; ?></td>
 						<td  class=""><?php echo $scan["check_out"]; ?></td>
 						<td  class=""><?php echo round($scan["hours_worked"],2) ; ?></td>

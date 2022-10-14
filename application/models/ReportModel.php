@@ -15,14 +15,14 @@ class ReportModel extends CI_Model{
 		{
 			$start_date = $this->input->post('date_start');
 			$end_date = $this->input->post('date_end');
-			$this->db->where('created_at >=', $start_date . " 00:00:00");
-			$this->db->where('created_at <=', $end_date . " 23:59:59");
+			$this->db->where('created_at >=', $start_date . " 06:00:00");
+			$this->db->where('created_at <=', $end_date . " 17:59:59");
 		}
 		else
 		{
 			$today = date('Y-m-d');
-			$this->db->where('created_at >=', $today . " 00:00:00");
-			$this->db->where('created_at <=', $today . " 23:59:59");
+			$this->db->where('created_at >=', $today . " 06:00:00");
+			$this->db->where('created_at <=', $today . " 17:59:59");
 		}
 
 
@@ -32,8 +32,8 @@ class ReportModel extends CI_Model{
 		$this->db->join('locations', 'scans.location = locations.location_id', 'left');
 		$query = $this->db->get();
 
-		//$lastone = $this->db->last_query();
-		//print_r($lastone);
+		$lastone = $this->db->last_query();
+		print_r($lastone);
 
 		return $query->result_array();
 	}
