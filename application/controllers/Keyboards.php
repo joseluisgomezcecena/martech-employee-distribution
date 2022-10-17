@@ -50,7 +50,7 @@ class Keyboards extends CI_Controller {
 			}
 			//session message
 			$this->session->set_flashdata('creado', '<br> Se ha registrado el empleado: ' . $this->input->post('work_id') . $notes);
-			//redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
+			redirect(base_url() . 'keyboards/new/' . $location . '/' . $type);
 		}
 	}
 
